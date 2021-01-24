@@ -1,0 +1,107 @@
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    color: white;
+    transition: background-color .3s;
+    padding: 15px;
+}
+.header.show-burger {
+    background-color: var(--third-color);
+}
+.logo img {
+    width: 35%;
+}
+.nav-menu {
+    display: flex;
+}
+.nav-menu li {
+    padding: 15px;
+    flex: none;
+}
+.nav-menu li > a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: color .3s;
+}
+.nav-menu li > a:hover{
+    color: var(--fifth-color);
+}
+.nav-menu li > a.active {
+    color: var(--primary-color);
+}
+.header-burger {
+    display: none;
+    width: 30px;
+    height: 20px;
+    position: relative;
+}
+.header-burger span {
+    display: block;
+    background-color: white;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    transition: .3s;
+    transform-origin: center;
+}
+.header-burger span:nth-child(1) {
+    top: 0;
+}
+.header-burger span:nth-child(2) {
+    top: 50%;
+}
+.header-burger span:nth-child(3) {
+    top: 100%;
+}
+.header.show-burger .header-burger span:nth-child(1) {
+    top: 50%;
+    transform: rotate(-45deg);
+}
+.header.show-burger .header-burger span:nth-child(2) {
+    transform: scale(0);
+}
+.header.show-burger .header-burger span:nth-child(3) {
+    top: 50%;
+    transform: rotate(45deg);
+}
+.location {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.location p {
+    text-transform: uppercase;
+}
+
+@media(max-width: 767px) {
+    .logo img {
+        width: 25%;
+    }
+    .header-burger {
+        display: block;
+    }
+    .nav-menu {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        opacity: 0;
+        visibility: hidden;
+        background-color: var(--third-color);
+        transition: .3s;
+    }
+    .header.show-burger .nav-menu {
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+    .location {
+        display: block;
+    }
+}

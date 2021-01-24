@@ -1,0 +1,119 @@
+/* Welcome Screen */
+.welcome-section {
+    height: 100vh;
+    position: relative;
+}
+.welcome-section > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+.welcome-section > .container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: inherit;
+}
+.welcome-container {
+    display: flex;
+    align-items: center;
+}
+.welcome-row {
+    justify-content: center;
+    width: 100%;
+}
+h1 {
+    text-align: center;
+    font-family: 'Lowrider Bold Italic';
+    font-size: 72px;
+}
+h1 > span {
+    color: var(--primary-color)
+}
+.welcome-content p {
+    text-align: center;
+    font-size: 48px;
+    text-transform: uppercase;
+    font-family: 'stormfaze';
+    color: var(--fifth-color);
+}
+.go-button {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: var(--primary-color);
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 50%;
+    text-transform: uppercase;
+    font-family: 'Lowrider Bold Italic';
+    font-size: 26px;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    animation-duration: 1s;
+    animation-name: btn-opacity;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease-in-out;
+}
+@keyframes btn-opacity {
+    from {opacity: .5;}
+    to {opacity: 1;}
+}
+
+
+@media(max-width: 767px) {
+    h1 {
+        font-size: 48px;
+    }
+    .welcome-content p {
+        font-size: 32px;
+    }
+    .welcome-row {
+        width: unset;
+    }
+}
+/* SECTIONS */
+.light {
+    background-color: var(--third-color);
+}
+.dark {
+    background-color: var(--secondary-color);
+}
+.content {
+    padding: 30px 0;
+}
+.section-title {
+    font-size: 30px;
+    font-family: 'saved by zero';
+    margin-bottom: 20px;
+    color: var(--fifth-color);
+}
+.light h2 {
+    text-align: start;
+}
+.dark h2 {
+    text-align: end;
+}
+p {
+    padding: 10px 0;
+    font-size: 18px;
+}
+section img {
+    width: 100%;
+    object-fit: cover;
+}
+@media(max-width: 767px) {
+    .section-title {
+        font-size: 24px;
+    }
+}
+.who-am-i-section {
+    background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../images/welcome-screen-background2.webp);
+}
