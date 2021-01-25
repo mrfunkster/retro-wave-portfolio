@@ -8,6 +8,29 @@
 .wrapper.show-menu {
     transform: translateX(155px);
 }
+.wrapper:after {
+    content: '';
+    position: absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    z-index:1000;
+    background: repeating-linear-gradient(0deg, #111 0px, #111 1px, transparent 2px, transparent 5px);
+    background-size:100% 50px;
+    animation: lines 2s ease-out infinite;
+    opacity:0.3;
+    mix-blend-mode: color-burn;
+    pointer-events: none;
+}
+@keyframes lines {
+    0% {
+       background-position:0px 0px;
+    }
+    100% {
+       background-position:0px 25px;
+    }
+ }
 /* Welcome Screen */
 .welcome-section {
     height: 100vh;
@@ -55,10 +78,35 @@ h1 > span {
 }
 .welcome-content p span {
     animation-duration: 5s;
-    animation-name: colorChanger;
+    /* animation-name: colorChanger; */
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    position: relative;
 }
+
+.welcome-content p span:before {
+    content: "FUTURE";
+    position: absolute;
+    overflow: hidden;
+    color: var(--fourth-color);
+    width: 100%;
+    z-index: 5;
+    text-shadow: none;
+    text-align: left;
+    animation: flicker 3s linear infinite;
+}
+
+@keyframes flicker {
+0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: .99;
+    text-shadow: -1px -1px 0 outline, 1px -1px 0 outline, -1px 1px 0 outline, 1px 1px 0 outline, 0 -2px 8px, 0 0 2px, 0 0 5px #ff7e00, 0 0 15px #ff4444, 0 0 2px #ff7e00, 0 2px 3px #000;
+}
+20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.4;
+    text-shadow: none;
+}
+}
+
 @keyframes colorChanger {
     from {color: var(--fourth-color)}
     to {color: var(--primary-color)}
@@ -76,6 +124,7 @@ h1 > span {
     font-family: 'Lowrider Bold Italic';
     font-size: 26px;
     position: absolute;
+    z-index: 1001;
     left: 50%;
     bottom: 30px;
     transform: translateX(-50%);

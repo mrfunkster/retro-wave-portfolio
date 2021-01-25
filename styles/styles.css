@@ -74,7 +74,7 @@ body.lock {
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, .6);
-    z-index: 999;
+    z-index: 1111;
     visibility: hidden;
     opacity: 0;
     transition: .3s;

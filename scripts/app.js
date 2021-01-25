@@ -30,6 +30,6 @@ const closeBurger = () => {
     wrapper.classList.remove('show-menu');
     setTimeout(()=>{
         document.body.classList.remove('lock');
-    }, 300)    
+    }, 350)    
 }
 
