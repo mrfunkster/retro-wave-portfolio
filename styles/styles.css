@@ -51,13 +51,29 @@ body {
     min-width: 150px;
     color: white;
 }
+body.lock {
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--fifth-color);
+    transition: .3s;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--fourth-color);
+}
 .overlay {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .6);
     z-index: 999;
     visibility: hidden;
     opacity: 0;

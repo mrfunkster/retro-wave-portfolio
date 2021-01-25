@@ -1,3 +1,13 @@
+.wrapper {
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    transition: transform .3s;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.wrapper.show-menu {
+    transform: translateX(155px);
+}
 /* Welcome Screen */
 .welcome-section {
     height: 100vh;
@@ -28,6 +38,10 @@ h1 {
     text-align: center;
     font-family: 'Lowrider Bold Italic';
     font-size: 72px;
+    animation-duration: 0.08s;
+    animation-name: textflicker;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 h1 > span {
     color: var(--primary-color)
@@ -39,15 +53,24 @@ h1 > span {
     font-family: 'stormfaze';
     color: var(--fifth-color);
 }
+.welcome-content p span {
+    animation-duration: 5s;
+    animation-name: colorChanger;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes colorChanger {
+    from {color: var(--fourth-color)}
+    to {color: var(--primary-color)}
+}
 .go-button {
     display: block;
     text-decoration: none;
     color: white;
     background-color: var(--primary-color);
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     text-align: center;
-    line-height: 80px;
     border-radius: 50%;
     text-transform: uppercase;
     font-family: 'Lowrider Bold Italic';
@@ -62,10 +85,39 @@ h1 > span {
     animation-direction: alternate-reverse;
     animation-timing-function: ease-in-out;
 }
+.go-button img {
+    width: 70%;
+    object-fit: cover;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 6px;
+}
+.go-button p {
+    font-family: 'VCR Mono';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    animation-duration: 0.08s;
+    animation-name: textflickerMini;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
 @keyframes btn-opacity {
     from {opacity: .5;}
     to {opacity: 1;}
 }
+
+@keyframes textflicker {
+    from {
+      text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
+    }
+    to {
+      text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+    }
+  }
 
 
 @media(max-width: 767px) {

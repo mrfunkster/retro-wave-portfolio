@@ -1,12 +1,11 @@
-let header = document.querySelector('.header');
 let burgerBtn = document.querySelector('.header-burger');
 let overlay = document.querySelector('.overlay');
 let navMenu = document.querySelector('.menu');
+let wrapper = document.querySelector('.wrapper');
 
 burgerBtn.addEventListener('click', () => {
-    if(header.classList.contains('show-burger')) {
-        header.classList.remove('show-burger');
-        overlay.classList.remove('show');
+    if(burgerBtn.classList.contains('show-burger')) {
+        closeBurger();
         overlay.removeEventListener('click', function(e) {
             if(e.target === overlay) {
                 closeBurger();
@@ -14,7 +13,9 @@ burgerBtn.addEventListener('click', () => {
         });
     } else {
         overlay.classList.add('show');
-        header.classList.add('show-burger');
+        wrapper.classList.add('show-menu');
+        burgerBtn.classList.add('show-burger');
+        document.body.classList.add('lock')
         overlay.addEventListener('click', function(e) {
             if(e.target === overlay) {
                 closeBurger();
@@ -24,7 +25,11 @@ burgerBtn.addEventListener('click', () => {
 })
 
 const closeBurger = () => {
-    header.classList.remove('show-burger');
+    burgerBtn.classList.remove('show-burger');
     overlay.classList.remove('show');
+    wrapper.classList.remove('show-menu');
+    setTimeout(()=>{
+        document.body.classList.remove('lock');
+    }, 300)    
 }
 
