@@ -9,6 +9,7 @@ let welcomeSectionHeight = welcomeSection.offsetHeight;
 let viewportWidth        = window.innerWidth;
 let playerNext           = document.querySelector('.player-next');
 let playBtn              = document.querySelector('.player-btn');
+let visualizer           = document.querySelector('.visualizer');
 
 const closeBurger = () => {
     burgerBtn.classList.remove('show-burger');
@@ -81,8 +82,6 @@ for (let anchor of anchors) {
 }
 
 // Player
-
-let visualizer = document.querySelector('.visualizer');
 let enableSoundOnLoadedPage = false;
 var isPlaying = false;
 let currentTrack = 0;
@@ -129,6 +128,7 @@ function playSong() {
     track.play();
     isPlaying = true;
     playBtn.innerHTML = '<img src="images/pause.webp" alt="">';
+    visualizer.classList.add('visible')
     track.onended = () => {
         nextSong()
     }
@@ -138,6 +138,7 @@ function pauseSong() {
     track.pause();
     isPlaying = false;
     playBtn.innerHTML = '<img src="images/play.webp" alt="">';
+    visualizer.classList.remove('visible')
 };
 function nextSong() {
     let nextTrack = currentTrack + 1;
@@ -158,7 +159,7 @@ function createVisualizer() {
     analyser.fftSize = 32;
     const bufferLength = analyser.frequencyBinCount;
 
-    const barCount = bufferLength / 3.2;
+    const barCount = bufferLength / 2.67;
 
     for (i = 0; i < barCount; i++) {
         let visualizerSpan = document.createElement('span');

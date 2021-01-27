@@ -172,10 +172,17 @@
     margin-right: 10px;
     display: flex;
     align-items: flex-end;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
 }
 .visualizer span {
     background-color: white;
     min-height: 1px;
     margin: 0 1px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+}
+.visualizer.visible {
+    opacity: 1;
+    visibility: visible;
 }
