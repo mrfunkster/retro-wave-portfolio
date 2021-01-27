@@ -3,6 +3,7 @@
     left: 0;
     z-index: 100;
     transition: transform .3s;
+    flex: 1;
 }
 .wrapper.show-menu {
     transform: translateX(155px);
@@ -26,9 +27,9 @@
     right:0px;
     bottom:0px;
     z-index:1000;
-    background: repeating-linear-gradient(0deg, #111 0px, #111 1px, transparent 2px, transparent 5px);
+    background: repeating-linear-gradient(0deg, #111 0px, #111 .5px, transparent 1px, transparent 2.5px);
     background-size:100% 50px;
-    /* animation: lines 2s ease-out infinite; */
+    animation: lines 2s ease-out infinite;
     opacity:0.3;
     mix-blend-mode: color-burn;
     pointer-events: none;

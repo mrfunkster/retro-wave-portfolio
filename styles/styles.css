@@ -7,6 +7,7 @@ html {
     --third-color: #342E59;
     --fourth-color: #F2E85E;
     --fifth-color: #F2BC79;
+    height: -webkit-fill-available;
 }
 /* FONTS */
 @font-face {
@@ -50,6 +51,8 @@ body {
     font-family: 'VCR Mono';
     min-width: 150px;
     color: white;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
 }
 body.lock {
     overflow: hidden;
