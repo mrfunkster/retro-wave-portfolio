@@ -76,7 +76,7 @@ h1 {
     font-family: 'Lowrider Bold Italic';
     font-size: 72px;
     animation-duration: 0.08s;
-    /* animation-name: textflicker; */
+    animation-name: textflicker;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
@@ -107,7 +107,7 @@ h1 > span {
     z-index: 5;
     text-shadow: none;
     text-align: left;
-    /* animation: flicker 3s linear infinite; */
+    animation: flicker 3s linear infinite;
 }
 
 @keyframes flicker {
