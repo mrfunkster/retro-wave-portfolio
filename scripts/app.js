@@ -85,7 +85,7 @@ for (let anchor of anchors) {
 let enableSoundOnLoadedPage = false;
 var isPlaying = false;
 let currentTrack = 0;
-let audioContext = null;
+var audioContext = null;
 let track;
 let songList = [
     'audio/1.mp3',
@@ -151,7 +151,12 @@ function nextSong() {
 }
 
 function createVisualizer() {
-    audioContext = new AudioContext;
+    let AudioContext = window.AudioContext || window.webkitAudioContext || false;
+    if (AudioContext) {
+        audioContext = new AudioContext;
+    } else {
+        alert("This Browser is not support AudioContext")
+    }
     const src = audioContext.createMediaElementSource(track);
     const analyser = audioContext.createAnalyser();
     src.connect(analyser);
