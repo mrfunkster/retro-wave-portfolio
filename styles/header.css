@@ -132,15 +132,50 @@
 
 /* Player */
 .player {
-    
+    display: flex;
+    align-items: center;
 }
 .player-btn {
     width: 40px;
     height: 40px;
     background-color: var(--primary-color);
     cursor: pointer;
-    color: white;
     border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
+    position: relative;
+}
+.player-btn img {
+    width: 45%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.player-next {
+    color: white;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+}
+.player-next img {
+    width: 45%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.visualizer {
+    width: 30px;
+    height: 25px;
+    margin-right: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+.visualizer span {
+    background-color: white;
+    min-height: 1px;
+    margin: 0 1px;
+    margin-bottom: 5px;
 }

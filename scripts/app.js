@@ -7,6 +7,7 @@ let welcomeSection       = document.querySelector('.welcome-section')
 let mobileHeaderHeight   = mobileHeader.offsetHeight;
 let welcomeSectionHeight = welcomeSection.offsetHeight;
 let viewportWidth        = window.innerWidth;
+let playerNext           = document.querySelector('.player-next');
 let playBtn              = document.querySelector('.player-btn');
 
 const closeBurger = () => {
@@ -78,3 +79,108 @@ for (let anchor of anchors) {
         }, 200)
     })
 }
+
+// Player
+
+let visualizer = document.querySelector('.visualizer');
+let enableSoundOnLoadedPage = false;
+var isPlaying = false;
+let currentTrack = 0;
+let audioContext = null;
+let track;
+let songList = [
+    'audio/1.mp3',
+    'audio/2.mp3',
+    'audio/3.mp3'
+];
+
+if (enableSoundOnLoadedPage) {
+    initialization();
+    playSong();
+}
+
+function initialization() {
+    track = document.createElement('audio');
+    loadTrack(currentTrack);
+}
+
+function loadTrack(index) {
+    track.src = songList[index];
+    track.load();
+}
+
+
+function play() {
+    if(!enableSoundOnLoadedPage) {
+        initialization();
+        playSong();
+        enableSoundOnLoadedPage = true;
+    } else if (isPlaying === false) {
+        playSong();
+    } else {
+        pauseSong();
+    }
+}
+
+function playSong() {
+    if(!audioContext) {
+        createVisualizer();
+    }
+    track.play();
+    isPlaying = true;
+    playBtn.innerHTML = '<img src="images/pause.webp" alt="">';
+    track.onended = () => {
+        nextSong()
+    }
+};
+
+function pauseSong() {
+    track.pause();
+    isPlaying = false;
+    playBtn.innerHTML = '<img src="images/play.webp" alt="">';
+};
+function nextSong() {
+    let nextTrack = currentTrack + 1;
+    if (nextTrack > songList.length - 1) {
+        nextTrack = 0;
+    }
+    currentTrack = nextTrack;
+    loadTrack(nextTrack);
+    playSong();
+}
+
+function createVisualizer() {
+    audioContext = new AudioContext;
+    const src = audioContext.createMediaElementSource(track);
+    const analyser = audioContext.createAnalyser();
+    src.connect(analyser);
+    analyser.connect(audioContext.destination);
+    analyser.fftSize = 32;
+    const bufferLength = analyser.frequencyBinCount;
+
+    const barCount = bufferLength / 3.2;
+
+    for (i = 0; i < barCount; i++) {
+        let visualizerSpan = document.createElement('span');
+        visualizerSpan.classList.add('bar')
+        visualizerSpan.style.width = `${visualizer.offsetWidth / barCount}px`
+        visualizer.appendChild(visualizerSpan)
+    }
+    const bars = document.querySelectorAll('.bar');
+    const dataArray = new Uint8Array(bufferLength);
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        analyser.getByteFrequencyData(dataArray);
+        for (let i = 0; i < barCount; i++) {
+            const barHeight = dataArray[i + 3] / 2.55;
+            bars[i].style.height = barHeight + '%'
+        }
+    }
+
+    renderFrame();
+}
+
+
+playBtn.addEventListener('click', play)
+playerNext.addEventListener('click', nextSong)
