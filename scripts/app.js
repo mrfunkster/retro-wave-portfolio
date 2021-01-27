@@ -11,6 +11,9 @@ let playerNext           = document.querySelector('.player-next');
 let playBtn              = document.querySelector('.player-btn');
 let visualizer           = document.querySelector('.visualizer');
 
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 const closeBurger = () => {
     burgerBtn.classList.remove('show-burger');
     overlay.classList.remove('show');
@@ -29,6 +32,8 @@ const headerVisibility = () => {
 }
 
 window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
     viewportWidth = window.innerWidth;
     headerVisibility();
 });
