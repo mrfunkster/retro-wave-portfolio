@@ -170,6 +170,7 @@
     width: 30px;
     height: 25px;
     margin-right: 10px;
+    margin-bottom: 5px;
     display: flex;
     align-items: flex-end;
     visibility: hidden;

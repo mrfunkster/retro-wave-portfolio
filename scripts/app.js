@@ -160,13 +160,15 @@ function createVisualizer() {
     if (AudioContext) {
         audioContext = new AudioContext;
     } else {
-        alert("This Browser is not support AudioContext")
+        alert("Shit!")
     }
     const src = audioContext.createMediaElementSource(track);
     const analyser = audioContext.createAnalyser();
+    console.log(analyser)
     src.connect(analyser);
     analyser.connect(audioContext.destination);
     analyser.fftSize = 32;
+    analyser.maxDecibels = -12;
     const bufferLength = analyser.frequencyBinCount;
 
     const barCount = bufferLength / 2.67;

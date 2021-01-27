@@ -42,6 +42,114 @@
        background-position:0px 25px;
     }
  }
+ .wrapper::before {
+    content: '';
+    position: absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    z-index:1500;
+    color: white;
+    background: repeating-linear-gradient(0deg, #111 0px, #111211 .5px, transparent 4px, transparent 5px);
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-anim-2 3s infinite;
+ }
+ @keyframes noise-anim-2 {
+    0% {
+      clip: rect(2000px, 9999px, 78px, 0);
+    }
+    3.33333% {
+      clip: rect(100px, 9999px, 500px, 0);
+    }
+    6.66667% {
+      clip: rect(5000px, 9999px, 7px, 0);
+    }
+    10% {
+      clip: rect(12px, 9999px, 43px, 0);
+    }
+    13.33333% {
+      clip: rect(92px, 9999px, 7px, 0);
+    }
+    16.66667% {
+      clip: rect(7000px, 9999px, 1px, 0);
+    }
+    20% {
+      clip: rect(35px, 9999px, 16px, 0);
+    }
+    23.33333% {
+      clip: rect(1000px, 9999px, 60px, 0);
+    }
+    26.66667% {
+      clip: rect(500px, 9999px, 92px, 0);
+    }
+    30% {
+      clip: rect(120px, 9999px, 47px, 0);
+    }
+    33.33333% {
+      clip: rect(15px, 9999px, 87px, 0);
+    }
+    36.66667% {
+      clip: rect(780px, 9999px, 25px, 0);
+    }
+    40% {
+      clip: rect(66px, 9999px, 10px, 0);
+    }
+    43.33333% {
+      clip: rect(59px, 9999px, 40px, 0);
+    }
+    46.66667% {
+      clip: rect(8px, 9999px, 4px, 0);
+    }
+    50% {
+      clip: rect(5000px, 9999px, 85px, 0);
+    }
+    53.33333% {
+      clip: rect(19px, 9999px, 53px, 0);
+    }
+    56.66667% {
+      clip: rect(40px, 9999px, 81px, 0);
+    }
+    60% {
+      clip: rect(400px, 9999px, 81px, 0);
+    }
+    63.33333% {
+      clip: rect(14px, 9999px, 78px, 0);
+    }
+    66.66667% {
+      clip: rect(84px, 9999px, 45px, 0);
+    }
+    70% {
+      clip: rect(30px, 9999px, 61px, 0);
+    }
+    73.33333% {
+      clip: rect(31px, 9999px, 64px, 0);
+    }
+    76.66667% {
+      clip: rect(2500px, 9999px, 69px, 0);
+    }
+    80% {
+      clip: rect(13px, 9999px, 15px, 0);
+    }
+    83.33333% {
+      clip: rect(15px, 9999px, 87px, 0);
+    }
+    86.66667% {
+      clip: rect(8px, 9999px, 400px, 0);
+    }
+    90% {
+      clip: rect(1050px, 9999px, 12px, 0);
+    }
+    93.33333% {
+      clip: rect(94px, 9999px, 12px, 0);
+    }
+    96.66667% {
+      clip: rect(74px, 9999px, 34px, 0);
+    }
+    100% {
+      clip: rect(64px, 9999px, 98px, 0);
+    }
+  }
 /* Welcome Screen */
 .welcome-section {
     height: 100vh;
