@@ -12,7 +12,7 @@
     width: 35%;
 }
 .nav-menu {
-    padding-top: 60px;
+    padding-top: 75px;
 }
 .nav-menu li {
     padding: 15px;
@@ -42,15 +42,38 @@
     to {
       text-shadow: 0.5px 0.125px 1px #ea36af, -0.25px -0.125px .5px #75fa69;
     }
-  }
+}
+.mobile-header {
+    position: fixed;
+    width: 100%;
+    z-index: 200;
+    padding: 30px;
+    /* transition: background-color .3s;
+    transition: box-shadow .3s; */
+    transition: .3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobile-header.visible {
+    background-color: var(--secondary-color);
+    animation: neonFlicker 4s linear infinite;
+}
+@keyframes neonFlicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        box-shadow: 0 1px 30px var(--fourth-color);
+
+    }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        box-shadow: none;
+
+    }
+}
 .header-burger {
     width: 30px;
     height: 20px;
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    z-index: 200;
     cursor: pointer;
+    position: relative;
 }
 .header-burger span {
     display: block;
@@ -93,10 +116,31 @@
 }
 
 @media(max-width: 767px) {
+    .nav-menu {
+        padding-top: 45px;
+    }
     .logo img {
         width: 25%;
     }
     .location {
         display: block;
     }
+    .mobile-header {
+        padding: 15px;
+    }
+}
+
+/* Player */
+.player {
+    
+}
+.player-btn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
 }
