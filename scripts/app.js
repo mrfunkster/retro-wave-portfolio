@@ -74,7 +74,6 @@ for (let anchor of anchors) {
         } else {
             headerOffset = 0;
         };
-        headerOffset = 0;
         closeBurger();
         setTimeout(() => {
             $('html, body').animate({
