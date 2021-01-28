@@ -7,9 +7,6 @@ let welcomeSection       = document.querySelector('.welcome-section')
 let mobileHeaderHeight   = mobileHeader.offsetHeight;
 let welcomeSectionHeight = welcomeSection.offsetHeight;
 let viewportWidth        = window.innerWidth;
-let playerNext           = document.querySelector('.player-next');
-let playBtn              = document.querySelector('.player-btn');
-let visualizer           = document.querySelector('.visualizer');
 
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -24,7 +21,7 @@ const closeBurger = () => {
 }
 
 const headerVisibility = () => {
-    if ((window.pageYOffset >= (welcomeSectionHeight - mobileHeaderHeight)) && viewportWidth <= 1024) {
+    if ((window.pageYOffset >= ((welcomeSectionHeight / 3 ) - mobileHeaderHeight)) && viewportWidth <= 1024) {
         mobileHeader.classList.add('visible')
     } else {
         mobileHeader.classList.remove('visible')
@@ -77,6 +74,7 @@ for (let anchor of anchors) {
         } else {
             headerOffset = 0;
         };
+        headerOffset = 0;
         closeBurger();
         setTimeout(() => {
             $('html, body').animate({
@@ -87,15 +85,22 @@ for (let anchor of anchors) {
 }
 
 // Player
+let playerNext              = document.querySelector('.player-next');
+let playBtn                 = document.querySelector('.player-btn');
+let visualizer              = document.querySelector('.visualizer');
+let timeCode                = document.querySelector('.time-code');
+let timeCodeSection         = document.querySelector('.time-code-section');
+let timeBar                 = document.querySelector('.time-bar');
 let enableSoundOnLoadedPage = false;
-var isPlaying = false;
-let currentTrack = 0;
-var audioContext = null;
-let track;
+let isPlaying               = false;
+let currentTrack            = 0;
+let audioContext            = null;
+let track, AudioContext, src;
 let songList = [
     'audio/1.mp3',
     'audio/2.mp3',
-    'audio/3.mp3'
+    'audio/3.mp3',
+    'audio/4.mp3',
 ];
 
 if (enableSoundOnLoadedPage) {
@@ -105,6 +110,7 @@ if (enableSoundOnLoadedPage) {
 
 function initialization() {
     track = document.createElement('audio');
+    AudioContext = window.AudioContext || window.webkitAudioContext || false;
     loadTrack(currentTrack);
 }
 
@@ -114,11 +120,16 @@ function loadTrack(index) {
 }
 
 
+
 function play() {
     if(!enableSoundOnLoadedPage) {
         initialization();
         playSong();
         enableSoundOnLoadedPage = true;
+        timeCodeSection.classList.add('visible');
+        visualizer.classList.add('visible');
+        playerNext.classList.add('visible');
+        playBtn.classList.remove('sided')
     } else if (isPlaying === false) {
         playSong();
     } else {
@@ -129,42 +140,116 @@ function play() {
 function playSong() {
     if(!audioContext) {
         createVisualizer();
-    }
+    };
+    audioTimer();
+    fadeIn();
     track.play();
     isPlaying = true;
     playBtn.innerHTML = '<img src="images/pause.webp" alt="">';
-    visualizer.classList.add('visible')
     track.onended = () => {
         nextSong()
     }
 };
 
 function pauseSong() {
-    track.pause();
+    fadeOut();
     isPlaying = false;
     playBtn.innerHTML = '<img src="images/play.webp" alt="">';
-    visualizer.classList.remove('visible')
 };
+
 function nextSong() {
-    let nextTrack = currentTrack + 1;
-    if (nextTrack > songList.length - 1) {
-        nextTrack = 0;
+    fadeOut();
+    setTimeout(() => {
+        let nextTrack = currentTrack + 1;
+        if (nextTrack > songList.length - 1) {
+            nextTrack = 0;
+        }
+        currentTrack = nextTrack;
+        loadTrack(nextTrack);
+        playSong();
+    }, 500);
+};
+
+function fadeIn() {
+    let i = 0;
+    let fadeTime = 500;
+    function fade() {
+        setTimeout(() => {
+            track.volume = i / 100;
+            i++;
+            if (i <= 100) {
+                fade();
+            }
+        }, fadeTime/100);
     }
-    currentTrack = nextTrack;
-    loadTrack(nextTrack);
-    playSong();
+    fade();
+
+}
+function fadeOut() {
+    let i = 100;
+    let fadeTime = 500;
+    function fade() {
+        setTimeout(() => {
+            track.volume = i / 100;
+            i--;
+            if (i >= 0) {
+                fade();
+            }
+        }, fadeTime/100)
+    };
+    fade();
+    setTimeout(() => {
+        track.pause();
+    }, fadeTime);
+};
+
+function audioTimer() {
+    track.addEventListener('timeupdate', function() {
+        let timeStamp = track.currentTime;
+        let duration = track.duration;
+        timeBarWidth(timeStamp, duration);
+        timeCode.innerHTML = `${minutesConverter(timeStamp)}:${secondsConverter(timeStamp)}/${minutesConverter(duration)}:${secondsConverter(duration)}`;
+    })
+}
+function minutesConverter(seconds) {
+    if (isNaN(seconds)) {
+        return '--'
+    };
+    let minutes = Math.floor(seconds / 60);
+    if (minutes < 10) {
+        minutes = '0' + minutes;
+        return minutes;
+    } else {
+        return minutes;
+    };
+};
+function secondsConverter(seconds) {
+    if (isNaN(seconds)) {
+        return '--'
+    };
+    let sec = Math.floor(seconds % 60);
+    if (sec < 10) {
+        sec = '0' + sec;
+        return sec;
+    } else {
+        return sec;
+    };
+};
+function timeBarWidth(seconds, duration) {
+    let currentTime = Math.floor(seconds);
+    let barWidth = (100 * currentTime) / duration;
+    timeBar.style.width = barWidth + '%'
 }
 
+
 function createVisualizer() {
-    let AudioContext = window.AudioContext || window.webkitAudioContext || false;
     if (AudioContext) {
         audioContext = new AudioContext;
     } else {
         alert("Shit!")
     }
-    const src = audioContext.createMediaElementSource(track);
+    src = audioContext.createMediaElementSource(track);
     const analyser = audioContext.createAnalyser();
-    console.log(analyser)
     src.connect(analyser);
     analyser.connect(audioContext.destination);
     analyser.fftSize = 32;

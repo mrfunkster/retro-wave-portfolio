@@ -48,9 +48,6 @@
     width: 100%;
     z-index: 200;
     padding: 30px;
-    /* transition: background-color .3s;
-    transition: box-shadow .3s; */
-    transition: .3s;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -115,7 +112,7 @@
     text-transform: uppercase;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
     .nav-menu {
         padding-top: 60px;
     }
@@ -142,6 +139,10 @@
     cursor: pointer;
     border-radius: 50%;
     position: relative;
+    transition: transform .3s;
+}
+.player-btn.sided {
+    transform: translateX(30px);
 }
 .player-btn img {
     width: 45%;
@@ -157,6 +158,13 @@
     height: 30px;
     cursor: pointer;
     position: relative;
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+}
+.player-next.visible {
+    opacity: 1;
+    visibility: visible;
 }
 .player-next img {
     width: 45%;
@@ -166,24 +174,57 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.time-code-section {
+    margin-right: 10px;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+.time-code-section.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.time-bar-section {
+    position: relative;
+    margin-top: 2px;
+    height: 3px;
+}
+.time-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    z-index: 2;
+}
+.time-bar-bottom {
+    height: 100%;
+    width: 100%;
+    background-color: var(--third-color);
+    position: absolute;
+    left: 0;
+}
+
 .visualizer {
     width: 30px;
     height: 25px;
     margin-right: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     display: flex;
     align-items: flex-end;
-    visibility: hidden;
+    transition: .5s;
     opacity: 0;
-    transition: .3s;
-}
-.visualizer span {
-    background-color: white;
-    min-height: 1px;
-    margin: 0 1px;
-    margin-bottom: 3px;
+    visibility: hidden;
 }
 .visualizer.visible {
     opacity: 1;
     visibility: visible;
+}
+.visualizer span {
+    background-color: white;
+    margin: 0 1px;
+    margin-bottom: 3px;
+    min-height: 1px;
+    transform-origin: center;
 }

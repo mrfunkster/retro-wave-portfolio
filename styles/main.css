@@ -172,6 +172,7 @@
 .welcome-container {
     display: flex;
     align-items: center;
+    position: relative;
 }
 .welcome-row {
     justify-content: center;
@@ -292,6 +293,13 @@ h1 > span {
 @media(max-width: 767px) {
     h1 {
         font-size: 48px;
+    }
+    .welcome-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
     }
     .welcome-content p {
         font-size: 32px;
