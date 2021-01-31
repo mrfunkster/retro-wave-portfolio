@@ -7,7 +7,7 @@
 }
 .wrapper.show-menu {
     transform: translateX(155px);
-    /* animation: neonFlickerPrimary 3s linear infinite; */
+    animation: neonFlickerPrimary 3s linear infinite;
 }
 @keyframes neonFlickerPrimary {
   0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
@@ -182,7 +182,7 @@ h1 {
     font-family: 'Lowrider Bold Italic';
     font-size: 72px;
     animation-duration: 0.08s;
-    /* animation-name: textflicker; */
+    animation-name: textflicker;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
@@ -213,7 +213,7 @@ h1 > span {
     z-index: 5;
     text-shadow: none;
     text-align: left;
-    /* animation: flicker 3s linear infinite; */
+    animation: flicker 3s linear infinite;
 }
 
 @keyframes flicker {
