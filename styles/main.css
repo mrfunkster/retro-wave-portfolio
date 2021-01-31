@@ -7,17 +7,16 @@
 }
 .wrapper.show-menu {
     transform: translateX(155px);
-    animation: neonFlickerPrimary 3s linear infinite;
+    /* animation: neonFlickerPrimary 3s linear infinite; */
 }
 @keyframes neonFlickerPrimary {
-    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-        box-shadow: 0 1px 30px var(--primary-color);
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+      box-shadow: 0 1px 30px var(--primary-color);
 
-    }
-    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-        box-shadow: none;
-
-    }
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+      box-shadow: none;
+  }
 }
 .wrapper:after {
     content: '';
@@ -29,7 +28,7 @@
     z-index:1000;
     background: repeating-linear-gradient(0deg, #111 0px, #111 .5px, transparent 1px, transparent 2.5px);
     background-size:100% 50px;
-    animation: lines 2s ease-out infinite;
+    /* animation: lines 2s ease-out infinite; */
     opacity:0.3;
     mix-blend-mode: color-burn;
     pointer-events: none;
@@ -53,7 +52,7 @@
     color: white;
     background: repeating-linear-gradient(0deg, #111 0px, #111211 .5px, transparent 4px, transparent 5px);
     clip: rect(0, 900px, 0, 0);
-    animation: noise-anim-2 3s infinite;
+    /* animation: noise-anim-2 3s infinite; */
  }
  @keyframes noise-anim-2 {
     0% {
@@ -183,7 +182,7 @@ h1 {
     font-family: 'Lowrider Bold Italic';
     font-size: 72px;
     animation-duration: 0.08s;
-    animation-name: textflicker;
+    /* animation-name: textflicker; */
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
@@ -214,7 +213,7 @@ h1 > span {
     z-index: 5;
     text-shadow: none;
     text-align: left;
-    animation: flicker 3s linear infinite;
+    /* animation: flicker 3s linear infinite; */
 }
 
 @keyframes flicker {
@@ -250,7 +249,7 @@ h1 > span {
     bottom: 30px;
     transform: translateX(-50%);
     animation-duration: 1s;
-    animation-name: btn-opacity;
+    /* animation-name: btn-opacity; */
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
     animation-timing-function: ease-in-out;

@@ -94,7 +94,9 @@ let enableSoundOnLoadedPage = false;
 let isPlaying               = false;
 let currentTrack            = 0;
 let audioContext            = null;
-let track, AudioContext, src;
+let lastGainValue           = 0;
+let track, src, analyser, gainNode;
+let fadeTime = 500;
 let songList = [
     'audio/1.mp3',
     'audio/2.mp3',
@@ -109,13 +111,15 @@ if (enableSoundOnLoadedPage) {
 
 function initialization() {
     track = document.createElement('audio');
-    AudioContext = window.AudioContext || window.webkitAudioContext || false;
     loadTrack(currentTrack);
 }
 
 function loadTrack(index) {
     track.src = songList[index];
     track.load();
+    track.addEventListener('load', function() {
+        console.log('track loaded!')
+    })
 }
 
 
@@ -170,11 +174,11 @@ function nextSong() {
 };
 
 function fadeIn() {
-    let i = 0;
-    let fadeTime = 500;
+    let i = lastGainValue
     function fade() {
         setTimeout(() => {
-            track.volume = i / 100;
+            gainNode.gain.value = (i / 100);
+            lastGainValue = i;
             i++;
             if (i <= 100) {
                 fade();
@@ -182,14 +186,13 @@ function fadeIn() {
         }, fadeTime/100);
     }
     fade();
-
 }
 function fadeOut() {
-    let i = 100;
-    let fadeTime = 500;
+    let i = lastGainValue;
     function fade() {
         setTimeout(() => {
-            track.volume = i / 100;
+            gainNode.gain.value = (i / 100);
+            lastGainValue = i;
             i--;
             if (i >= 0) {
                 fade();
@@ -203,12 +206,12 @@ function fadeOut() {
 };
 
 function audioTimer() {
-    track.addEventListener('timeupdate', function() {
-        let timeStamp = track.currentTime;
-        let duration = track.duration;
-        timeBarWidth(timeStamp, duration);
-        timeCode.innerHTML = `${minutesConverter(timeStamp)}:${secondsConverter(timeStamp)}/${minutesConverter(duration)}:${secondsConverter(duration)}`;
-    })
+    window.requestAnimationFrame(audioTimer);
+    let timeStamp = track.currentTime;
+    let duration = track.duration;
+    timeBarWidth(timeStamp, duration);
+    timeCode.innerHTML = `${minutesConverter(timeStamp)}:${secondsConverter(timeStamp)}/${minutesConverter(duration)}:${secondsConverter(duration)}`;
+
 }
 function minutesConverter(seconds) {
     if (isNaN(seconds)) {
@@ -242,19 +245,17 @@ function timeBarWidth(seconds, duration) {
 
 
 function createVisualizer() {
-    if (AudioContext) {
-        audioContext = new AudioContext;
-    } else {
-        alert("Shit!")
-    }
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioContext = new AudioContext();
+    analyser = audioContext.createAnalyser();
     src = audioContext.createMediaElementSource(track);
-    const analyser = audioContext.createAnalyser();
     src.connect(analyser);
-    analyser.connect(audioContext.destination);
+    gainNode = audioContext.createGain();
+    src.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    gainNode.gain.value = 0;
     analyser.fftSize = 32;
-    analyser.maxDecibels = -12;
     const bufferLength = analyser.frequencyBinCount;
-
     const barCount = bufferLength / 2.67;
 
     for (i = 0; i < barCount; i++) {
@@ -265,8 +266,9 @@ function createVisualizer() {
     }
     const bars = document.querySelectorAll('.bar');
     const dataArray = new Uint8Array(bufferLength);
+
     function renderFrame() {
-        requestAnimationFrame(renderFrame);
+        window.requestAnimationFrame(renderFrame);
 
         analyser.getByteFrequencyData(dataArray);
         for (let i = 0; i < barCount; i++) {
@@ -274,7 +276,6 @@ function createVisualizer() {
             bars[i].style.height = barHeight + '%'
         }
     }
-
     renderFrame();
 }
 

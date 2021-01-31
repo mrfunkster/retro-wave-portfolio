@@ -53,8 +53,6 @@ body {
     font-family: 'VCR Mono';
     min-width: 150px;
     color: white;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
     background-color: var(--secondary-color);
 }
 body.lock {
