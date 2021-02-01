@@ -117,9 +117,6 @@ function initialization() {
 function loadTrack(index) {
     track.src = songList[index];
     track.load();
-    track.addEventListener('load', function() {
-        console.log('track loaded!')
-    })
 }
 
 
@@ -139,6 +136,8 @@ function play() {
         pauseSong();
     }
 }
+
+
 
 function playSong() {
     if(!audioContext) {
@@ -251,9 +250,9 @@ function createVisualizer() {
     src = audioContext.createMediaElementSource(track);
     src.connect(analyser);
     gainNode = audioContext.createGain();
+    gainNode.gain.value = 0;
     src.connect(gainNode);
     gainNode.connect(audioContext.destination);
-    gainNode.gain.value = 0;
     analyser.fftSize = 32;
     const bufferLength = analyser.frequencyBinCount;
     const barCount = bufferLength / 2.67;
