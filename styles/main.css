@@ -478,7 +478,7 @@ section img {
     background-color: blue;
     border-radius: 15px;
     border: 1px solid white;
-    width: 401px;
+    width: 450px;
     visibility: hidden;
     opacity: 0;
     transition: .5s;
@@ -501,13 +501,15 @@ section img {
 }
 .text-typing {
     position: relative;
+    line-height: 24px;
 }
 .text-typing::after {
     content: '';
     background-color: white;
     position: absolute;
+    
     width: 8px;
-    height: 16px;
+    height: 20px;
     animation: blink .5s infinite steps(2);
 }
 @keyframes blink {
