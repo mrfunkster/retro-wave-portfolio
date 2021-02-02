@@ -94,6 +94,8 @@ let visualizer              = document.querySelector('.visualizer');
 let timeCode                = document.querySelector('.time-code');
 let timeCodeSection         = document.querySelector('.time-code-section');
 let timeBar                 = document.querySelector('.time-bar');
+let timeBarSection          = document.querySelector('.time-bar-section');
+let audioStatus             = document.querySelector('.audio-status');
 let enableSoundOnLoadedPage = false;
 let isPlaying               = false;
 let currentTrack            = 0;
@@ -218,7 +220,12 @@ function audioTimer() {
 }
 function minutesConverter(seconds) {
     if (isNaN(seconds)) {
+        audioStatus.classList.add('visible');
+        timeBarSection.classList.remove('visible');
         return '--'
+    } else {
+        audioStatus.classList.remove('visible');
+        timeBarSection.classList.add('visible');
     };
     let minutes = Math.floor(seconds / 60);
     if (minutes < 10) {

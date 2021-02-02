@@ -178,6 +178,7 @@
     margin-right: 10px;
     display: block;
     visibility: hidden;
+    position: relative;
     opacity: 0;
     transition: .5s;
 }
@@ -190,6 +191,10 @@
     position: relative;
     margin-top: 2px;
     height: 3px;
+    visibility: hidden;
+}
+.time-bar-section.visible {
+    visibility: visible;
 }
 .time-bar {
     height: 100%;
@@ -204,6 +209,25 @@
     background-color: var(--third-color);
     position: absolute;
     left: 0;
+}
+.audio-status {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    z-index: 2;
+    display: none;
+    animation: loading 1s infinite ease-in-out;
+}
+
+.audio-status.visible {
+    display: block;
+}
+@keyframes loading {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 .visualizer {
