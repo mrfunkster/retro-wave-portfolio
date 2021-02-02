@@ -6,7 +6,7 @@
     flex: 1;
 }
 .wrapper.show-menu {
-    transform: translateX(155px);
+    transform: translateX(var(--nav-width));
     animation: neonFlickerPrimary 3s linear infinite;
 }
 @keyframes neonFlickerPrimary {
@@ -477,6 +477,7 @@ section img {
     padding: 15px 25px 15px 15px;
     background-color: blue;
     border-radius: 15px;
+    border-bottom-left-radius: 0;
     border: 1px solid white;
     width: 450px;
     visibility: hidden;
@@ -543,4 +544,84 @@ section img {
 .bottle img {
     height: 100%;
     object-fit: contain;
+}
+
+@media (max-width: 767px) {
+    .bar {
+        overflow-x: hidden;
+    }
+    .neon-lights-1 {
+        width: 15%;
+    }
+    .bar-background-top {
+        position: absolute;
+        min-height: 50vh;
+    }
+    .bar-background-top img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .bar-image-bottom {
+        min-height: inherit;
+        position: relative;
+    }
+    .bar-image-bottom img {
+        position: absolute;
+    }
+    .bartender {
+        width: 65%;
+        left: -26%;
+        top: 28%;
+    }
+    .dialogue-section {
+        width: 75%;
+        right: 15px;
+        top: 30px;
+        left: unset;
+        padding-right: 15px;
+    }
+    .dialogue-section p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .dialogue-section-arrow {
+        display: none;
+    }
+    .bar-counter-section {
+        top: 45%;
+        height: 50%;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .bar-counter {
+        height: 100%;
+        width: 100%;
+    }
+    .bar-counter img {
+        width: unset;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-51%);
+    }
+    .bar-chairs {
+        display: none;
+    }
+    .bottles {
+       left: 0;
+       width: 100%;
+       top: 12%;
+       justify-content: space-around;
+    }
+    .bottle {
+        width: 30px;
+        height: 50px;
+        margin: 0;
+        flex: 0 1 auto;
+    }
+    .bottle img {
+        width: 100%;
+        object-fit: contain;
+    }
 }

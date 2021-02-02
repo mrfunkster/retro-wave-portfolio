@@ -53,7 +53,11 @@ function textTyping(index) {
 
 
 function startTyping() {
-    if(window.scrollY >= skillBarSection.offsetTop && !isScrolled) {
+    let scrollOffset = 0
+    if(viewportWidth <= 768) {
+        scrollOffset = mobileHeaderHeight
+    }
+    if((window.scrollY >= (skillBarSection.offsetTop - scrollOffset - 1)) && !isScrolled) {
         textTyping(0);
         isScrolled = true;
         window.removeEventListener('scroll', startTyping);

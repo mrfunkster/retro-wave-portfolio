@@ -8,8 +8,12 @@ let mobileHeaderHeight   = mobileHeader.offsetHeight;
 let welcomeSectionHeight = welcomeSection.offsetHeight;
 let viewportWidth        = window.innerWidth;
 
+
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+let navMenuWidth         = document.querySelector('.header').offsetWidth;
+document.documentElement.style.setProperty('--nav-width', `${navMenuWidth}px`);
 
 const closeBurger = () => {
     burgerBtn.classList.remove('show-burger');
