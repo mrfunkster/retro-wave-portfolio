@@ -3,16 +3,24 @@ let overlay              = document.querySelector('.overlay');
 let navMenu              = document.querySelector('.menu');
 let wrapper              = document.querySelector('.wrapper');
 let mobileHeader         = document.querySelector('.mobile-header');
-let welcomeSection       = document.querySelector('.welcome-section')
+let welcomeSection       = document.querySelector('.welcome-section');
 let mobileHeaderHeight   = mobileHeader.offsetHeight;
 let welcomeSectionHeight = welcomeSection.offsetHeight;
 let viewportWidth        = window.innerWidth;
+let sections             = document.querySelectorAll('section');
 
+function isLargeScreenNow() {
+    if (viewportWidth > 768) {
+        return true
+    } else {
+        return false
+    };
+};
 
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-let navMenuWidth         = document.querySelector('.header').offsetWidth;
+let navMenuWidth = document.querySelector('.header').offsetWidth;
 document.documentElement.style.setProperty('--nav-width', `${navMenuWidth}px`);
 
 const closeBurger = () => {
@@ -36,6 +44,7 @@ window.addEventListener('resize', () => {
     vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     viewportWidth = window.innerWidth;
+    isLargeScreenNow();
     headerVisibility();
 });
 window.addEventListener("scroll", headerVisibility);
@@ -49,6 +58,7 @@ burgerBtn.addEventListener('click', () => {
             }
         });
     } else {
+        sectionScroll();
         overlay.classList.add('show');
         wrapper.classList.add('show-menu');
         burgerBtn.classList.add('show-burger');
@@ -86,6 +96,22 @@ for (let anchor of anchors) {
         }, 200)
     })
 }
+
+function sectionScroll() {
+    for (let section of sections) {
+        let headerOffset = mobileHeaderHeight;
+        if(isLargeScreenNow) {
+            headerOffset = 0;
+        };
+        if (scrollY >= (section.offsetTop - headerOffset)) {
+            const navID ="#" + section.getAttribute('id');
+            let nav = document.querySelector(`a[href="${navID}"]`);
+            anchors.forEach(btn => btn.classList.remove('active'));
+            nav.classList.add('active');
+        };
+    };
+};
+
 
 // Player
 let playerNext              = document.querySelector('.player-next');
