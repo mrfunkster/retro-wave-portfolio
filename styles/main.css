@@ -627,6 +627,31 @@ section img {
 }
 
 /* Menu */
+.projects-section {
+    position: relative;
+}
+.background-image-blured {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    filter: blur(2px) brightness(30%);
+}
+.projects-section-container {
+    position: relative;
+}
+.background-image-blured img {
+    height: 100%;
+    object-fit: cover;
+}
+.menu-title {
+    text-align: center !important;
+    font-size: 30px;
+}
+.menu-description {
+    text-align: center;
+    margin-bottom: 15px;
+}
 .menu-item {
     padding: 15px;
 }
@@ -636,10 +661,14 @@ section img {
     height: 2px;
     background: linear-gradient(90deg, rgba(52,46,89,1) 0%, rgba(242,232,94,1) 50%, rgba(52,46,89,1) 100%);
 }
+.right .line {
+    background: linear-gradient(90deg, rgba(52,46,89,1) 0%, rgba(242,56,124,1) 50%, rgba(52,46,89,1) 100%);
+}
 .menu-item-img {
     width: 100%;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0px 0px 100px 0px var(--secondary-color);
 }
 .menu-item-img img {
     width: 100%;
@@ -649,6 +678,9 @@ section img {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.item-title.mobile {
+    display: none;
 }
 .menu-item-title {
     font-family: 'Lowrider Bold Italic';
@@ -676,13 +708,13 @@ section img {
 .check-button {
     display: inline-block;
     border: 1px solid var(--fourth-color);
-    animation: neonFlicker 4s linear infinite;
+    animation: neonFlicker 3.5s linear infinite;
 }
 .check-button a {
     display: inline-block;
     text-decoration: none;
     color: var(--fourth-color);
-    font-family: 'Lowrider Bold';
+    font-family: 'stormfaze';
     font-size: 20px;
     padding: 10px;
 }
@@ -715,13 +747,37 @@ section img {
 }
 
 @media (max-width: 767px) {
+    .menu-item {
+        padding-top: 0;
+    }
     .project-image {
         margin: 15px 0;
     }
     .left .project-image {
-        order: 1;
+        order: 0;
     }
     .left .project-description {
-        order: 2;
+        order: 1;
+    }
+    .menu-item-title {
+        font-size: 34px;
+    }
+    .item-title.mobile {
+        display: block;
+        position: relative;
+    }
+    .react-logo {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+    }
+    .item-title.mobile h4 {
+    }
+    .project-image {
+        margin-top: 0;
+    }
+    .item-title {
+        display: none;
     }
 }
