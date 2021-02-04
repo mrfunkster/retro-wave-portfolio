@@ -713,3 +713,15 @@ section img {
 .primary a {
     color: var(--primary-color);
 }
+
+@media (max-width: 767px) {
+    .project-image {
+        margin: 15px 0;
+    }
+    .left .project-image {
+        order: 1;
+    }
+    .left .project-description {
+        order: 2;
+    }
+}
