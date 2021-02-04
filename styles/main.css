@@ -625,3 +625,91 @@ section img {
         object-fit: contain;
     }
 }
+
+/* Menu */
+.menu-item {
+    padding: 15px;
+}
+.line {
+    margin-top: 30px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(52,46,89,1) 0%, rgba(242,232,94,1) 50%, rgba(52,46,89,1) 100%);
+}
+.menu-item-img {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.menu-item-img img {
+    width: 100%;
+    object-fit: cover;
+}
+.item-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-item-title {
+    font-family: 'Lowrider Bold Italic';
+    font-size: 30px;
+    color: var(--primary-color);
+    text-align: center;
+    padding: 15px 10px;
+}
+.react-logo {
+    width: 35px;
+}
+.react-logo img {
+    width: 100%;
+    object-fit: cover;
+}
+.menu-item-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+.menu-item-description {
+    padding-bottom: 15px;
+    text-align: center;
+}
+.check-button {
+    display: inline-block;
+    border: 1px solid var(--fourth-color);
+    animation: neonFlicker 4s linear infinite;
+}
+.check-button a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--fourth-color);
+    font-family: 'Lowrider Bold';
+    font-size: 20px;
+    padding: 10px;
+}
+.git-button {
+    height: 40px;
+    width: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.git-button a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.git-button a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.yellow {
+    color: var(--fourth-color);
+}
+.primary {
+    animation: neonFlickerPrimary 2s linear infinite;
+    border-color: var(--primary-color);
+}
+.primary a {
+    color: var(--primary-color);
+}

@@ -215,11 +215,11 @@ function audioTimer() {
     let timeStamp = track.currentTime;
     let duration = track.duration;
     timeBarWidth(timeStamp, duration);
-    timeCode.innerHTML = `${minutesConverter(timeStamp)}:${secondsConverter(timeStamp)}/${minutesConverter(duration)}:${secondsConverter(duration)}`;
+    timeCode.innerHTML = `${minutesConverter(timeStamp, duration)}:${secondsConverter(timeStamp, duration)}/${minutesConverter(duration)}:${secondsConverter(duration)}`;
 
 }
-function minutesConverter(seconds) {
-    if (isNaN(seconds)) {
+function minutesConverter(seconds, duration = 0) {
+    if (isNaN(seconds) || isNaN(duration)) {
         audioStatus.classList.add('visible');
         timeBarSection.classList.remove('visible');
         return '--'
@@ -235,8 +235,8 @@ function minutesConverter(seconds) {
         return minutes;
     };
 };
-function secondsConverter(seconds) {
-    if (isNaN(seconds)) {
+function secondsConverter(seconds, duration = 0) {
+    if (isNaN(seconds) || isNaN(duration)) {
         return '--'
     };
     let sec = Math.floor(seconds % 60);
