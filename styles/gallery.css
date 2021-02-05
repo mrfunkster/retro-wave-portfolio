@@ -32,11 +32,15 @@
     cursor: pointer;
     font-size: 24px;
     z-index: 10;
+    background-color: rgba(0, 0, 0, .85);
+    padding: 5px;
 }
 .gallery-count {
     position: absolute;
     top: 20px;
     left: 20px;
+    background-color: rgba(0, 0, 0, .85);
+    padding: 5px;
 }
 .gallery-next {
     position: absolute;
@@ -86,6 +90,6 @@
     .gallery-next {
         top: unset;
         transform: none;
-        bottom: 60px;
+        bottom: 15px;
     }
 }

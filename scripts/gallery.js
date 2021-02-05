@@ -59,19 +59,35 @@ for (let i = 0; i < menuItemsImages.length; i++) {
 function createGallery(index) {
     let imgArray = images[index];
     let imageNumber = 0;
-    let element = document.createElement('div');
-    let image = document.createElement('img');
-    image.src = imgArray[imageNumber];
-    image.onload = imageLoaded;
-    element.classList.add('gallery-element');
-    gallery.appendChild(element);
-    element.appendChild(image);
+    // let closeGalleryBtn, galleryNext, galleryPrev, galleryCount, galleryLoader;
+
+    createGalleryElements();
+
+    
     gallery.classList.add('visible');
+    document.body.classList.add('lock');
 
     updateCounter(imageNumber);
     addLoader();
 
+    function createGalleryElements() {
+        element = document.createElement('div');
+        element.classList.add('gallery-element');
+        gallery.appendChild(element);
+
+        // closeGalleryBtn = document.createElement('div');
+        // closeGalleryBtn.innerHTML = 'X';
+        // closeGalleryBtn.classList.add('gallery-close');
+        // gallery.appendChild(closeGalleryBtn);
+
+        image = document.createElement('img');
+        element.appendChild(image);
+        image.src = imgArray[imageNumber];
+        image.onload = imageLoaded;
+    }
+
     function closeGallery() {
+        document.body.classList.remove('lock');
         removeAllGalleryEventListener();
         gallery.classList.remove('visible');
         element.remove();
