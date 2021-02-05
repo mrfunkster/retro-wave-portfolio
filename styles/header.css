@@ -236,7 +236,7 @@
 
 .visualizer {
     width: 30px;
-    height: 25px;
+    height: 22px;
     margin-right: 10px;
     display: flex;
     align-items: flex-end;
@@ -251,8 +251,7 @@
 .visualizer span {
     background-color: white;
     margin: 0 1px;
-    margin-bottom: 3px;
-    min-height: 1px;
+    min-height: 3px;
     transform-origin: center;
 }
 
