@@ -153,6 +153,18 @@ function createGallery(index) {
         }
     }
 
+    function swipe(e) {
+        let midPoint = Math.floor(screen.width / 2);
+        let touch = e.targetTouches[0];
+        let pageX = touch.pageX;
+        if(pageX > midPoint) {
+            prevImage();
+        } else {
+            nextImage();
+        }
+    }
+
+    element.addEventListener('touchmove', swipe);
     closeGalleryBtn.addEventListener('click', closeGallery);
     galleryNext.addEventListener('click', nextImage);
     galleryPrev.addEventListener('click', prevImage);
