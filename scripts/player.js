@@ -60,8 +60,8 @@ function playSong() {
         createVisualizer();
     };
     audioTimer();
-    fadeIn();
     track.play();
+    fadeIn();
     isPlaying = true;
     playBtn.innerHTML = '<img src="images/pause.webp" alt="">';
     track.onended = () => {
@@ -90,31 +90,31 @@ function nextSong() {
 
 function fadeIn() {
     let i = lastGainValue
-    function fade() {
+    function fadeUp() {
         setTimeout(() => {
             gainNode.gain.value = (i / 100);
             lastGainValue = i;
             i++;
             if (i <= 100) {
-                fade();
+                fadeUp();
             }
         }, fadeTime/100);
     }
-    fade();
+    fadeUp();
 }
 function fadeOut() {
     let i = lastGainValue;
-    function fade() {
+    function fadeDown() {
         setTimeout(() => {
             gainNode.gain.value = (i / 100);
             lastGainValue = i;
             i--;
             if (i >= 0) {
-                fade();
+                fadeDown();
             }
         }, fadeTime/100)
     };
-    fade();
+    fadeDown();
     setTimeout(() => {
         track.pause();
     }, fadeTime);
