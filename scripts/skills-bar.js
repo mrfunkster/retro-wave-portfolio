@@ -54,7 +54,7 @@ function textTyping(index) {
 
 function startTyping() {
     let scrollOffset = 0
-    if(viewportWidth <= 768) {
+    if(!isLargeScreenNow()) {
         scrollOffset = mobileHeaderHeight
     }
     if((window.scrollY >= (skillBarSection.offsetTop - scrollOffset - 1)) && !isScrolled) {

@@ -117,7 +117,7 @@ for (let anchor of anchors) {
         const blockID = anchor.getAttribute('href').substr(1);
         let block = document.getElementById(blockID);
         let headerOffset;
-        if (window.innerWidth <= 1024) {
+        if (!isLargeScreenNow()) {
             headerOffset = mobileHeaderHeight;
         } else {
             headerOffset = 0;
