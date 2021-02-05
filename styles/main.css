@@ -350,6 +350,9 @@ section img {
 }
 
 /* Skill Section */
+.bar-section-header {
+    display: none;
+}
 .bar {
   width: 100%;
   position: relative;
