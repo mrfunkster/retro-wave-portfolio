@@ -46,7 +46,7 @@ function bodyLock() {
 function bodyUnlock() {
     document.body.classList.remove('lock');
     document.documentElement.classList.remove('lock');
-}
+};
 
 setMobileBrowserHeight();
 setNavMenuWidth();
@@ -55,7 +55,6 @@ headerVisibility();
 window.addEventListener('resize', () => {
     viewportWidth = window.innerWidth;
     setMobileBrowserHeight();
-    isLargeScreenNow();
     headerVisibility();
 });
 window.addEventListener("scroll", headerVisibility);
@@ -94,7 +93,7 @@ const closeBurger = () => {
 function sectionScroll() {
     for (let section of sections) {
         let headerOffset = mobileHeaderHeight;
-        if(isLargeScreenNow) {
+        if(isLargeScreenNow()) {
             headerOffset = 0;
         };
         if (scrollY >= (section.offsetTop - headerOffset)) {

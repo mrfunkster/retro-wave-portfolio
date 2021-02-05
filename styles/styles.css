@@ -58,6 +58,7 @@ body {
     color: white;
     background-color: var(--secondary-color);
 }
+
 html.lock, body.lock {
     max-height: 100%;
     overflow-y: hidden;
