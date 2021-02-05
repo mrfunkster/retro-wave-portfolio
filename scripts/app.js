@@ -13,7 +13,7 @@ let sections             = document.querySelectorAll('section');
 // Set-up
 
 function isLargeScreenNow() {
-    if (viewportWidth > 768) {
+    if (viewportWidth > 1024) {
         return true
     } else {
         return false
@@ -36,6 +36,16 @@ const headerVisibility = () => {
     } else {
         mobileHeader.classList.remove('visible')
     }
+}
+
+function bodyLock() {
+    document.body.classList.add('lock');
+    document.documentElement.classList.add('lock');
+};
+
+function bodyUnlock() {
+    document.body.classList.remove('lock');
+    document.documentElement.classList.remove('lock');
 }
 
 setMobileBrowserHeight();
@@ -62,10 +72,10 @@ burgerBtn.addEventListener('click', () => {
         });
     } else {
         sectionScroll();
+        bodyLock();
         overlay.classList.add('show');
         wrapper.classList.add('show-menu');
         burgerBtn.classList.add('show-burger');
-        document.body.classList.add('lock')
         overlay.addEventListener('click', function(e) {
             if(e.target === overlay) {
                 closeBurger();
@@ -78,9 +88,7 @@ const closeBurger = () => {
     burgerBtn.classList.remove('show-burger');
     overlay.classList.remove('show');
     wrapper.classList.remove('show-menu');
-    setTimeout(()=>{
-        document.body.classList.remove('lock');
-    }, 350)
+    bodyUnlock();
 }
 
 function sectionScroll() {

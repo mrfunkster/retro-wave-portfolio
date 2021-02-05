@@ -65,7 +65,7 @@ function createGallery(index) {
 
     
     gallery.classList.add('visible');
-    document.body.classList.add('lock');
+    bodyLock();
 
     updateCounter(imageNumber);
     addLoader();
@@ -87,7 +87,7 @@ function createGallery(index) {
     }
 
     function closeGallery() {
-        document.body.classList.remove('lock');
+        bodyUnlock();
         removeAllGalleryEventListener();
         gallery.classList.remove('visible');
         element.remove();
