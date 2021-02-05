@@ -85,5 +85,5 @@ function clearDialogue() {
     currentText = '';
 };
 
-window.addEventListener('scroll', startTyping)
+window.addEventListener('scroll', startTyping);
 
