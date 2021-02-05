@@ -13,11 +13,38 @@ let images = [
         'images/menu/0/03.webp',
         'images/menu/0/04.webp'
     ],
-    [],
-    [],
-    [],
-    [],
+    [
+        'images/menu/1/01.webp',
+        'images/menu/1/02.webp',
+        'images/menu/1/03.webp',
+        'images/menu/1/04.webp',
+        'images/menu/1/05.webp',
+        'images/menu/1/06.webp',
+    ],
+    [
+        'images/menu/2/01.webp',
+        'images/menu/2/02.webp',
+        'images/menu/2/03.webp',
+        'images/menu/2/04.webp'
+    ],
+    [
+        'images/menu/3/01.webp',
+        'images/menu/3/02.webp',
+        'images/menu/3/03.webp',
+        'images/menu/3/04.webp',
+        'images/menu/3/05.webp',
+        'images/menu/3/06.webp',
+    ],
+    [
+        'images/menu/4/01.webp',
+        'images/menu/4/02.webp',
+        'images/menu/4/03.webp',
+        'images/menu/4/04.webp',
+        'images/menu/4/05.webp',
+    ],
 ];
+
+
 
 for (let i = 0; i < menuItemsImages.length; i++) {
     menuItemsImages[i].addEventListener('click', function() {
@@ -41,6 +68,7 @@ function createGallery(index) {
     element.appendChild(image);
     gallery.classList.add('visible');
 
+    updateCounter(imageNumber);
     addLoader();
 
     function closeGallery() {
