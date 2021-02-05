@@ -59,6 +59,7 @@ for (let i = 0; i < menuItemsImages.length; i++) {
 function createGallery(index) {
     let imgArray = images[index];
     let imageNumber = 0;
+    let touchStartX;
     // let closeGalleryBtn, galleryNext, galleryPrev, galleryCount, galleryLoader;
 
     createGalleryElements();
@@ -99,6 +100,8 @@ function createGallery(index) {
         galleryNext.removeEventListener('click', nextImage);
         galleryPrev.removeEventListener('click', prevImage);
         gallery.removeEventListener('click', isOverlay);
+        element.removeEventListener('touchstart', touchStart);
+        element.removeEventListener('touchend', touchEnd);
     };
 
     function imageLoaded() {
@@ -164,7 +167,22 @@ function createGallery(index) {
         }
     }
 
-    element.addEventListener('touchmove', swipe);
+    function touchStart(e) {
+        touchStartX = Math.floor(e.targetTouches[0].pageX);
+    }
+    function touchEnd(e) {
+        let touchEndX = Math.floor(e.changedTouches[0].pageX);
+        let diff = touchStartX - touchEndX;
+        if(diff > 0) {
+            nextImage();
+        } else {
+            prevImage();
+        }
+    }
+
+    element.addEventListener('touchstart', touchStart);
+    element.addEventListener('touchend', touchEnd);
+
     closeGalleryBtn.addEventListener('click', closeGallery);
     galleryNext.addEventListener('click', nextImage);
     galleryPrev.addEventListener('click', prevImage);
