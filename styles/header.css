@@ -192,6 +192,7 @@
     margin-top: 2px;
     height: 3px;
     visibility: hidden;
+    cursor: pointer;
 }
 .time-bar-section.visible {
     visibility: visible;
