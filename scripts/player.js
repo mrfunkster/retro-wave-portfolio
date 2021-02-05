@@ -33,6 +33,7 @@ function initialization() {
 function loadTrack(index) {
     track.src = songList[index];
     track.load();
+    track.addEventListener('timeupdate', audioTimer)
 }
 
 
@@ -120,14 +121,16 @@ function fadeOut() {
     }, fadeTime);
 };
 
+
+
+
 function audioTimer() {
-    window.requestAnimationFrame(audioTimer);
     let timeStamp = track.currentTime;
     let duration = track.duration;
     timeBarWidth(timeStamp, duration);
     timeCode.innerHTML = `${minutesConverter(timeStamp, duration)}:${secondsConverter(timeStamp, duration)}/${minutesConverter(duration)}:${secondsConverter(duration)}`;
+};
 
-}
 function minutesConverter(seconds, duration = 0) {
     if (isNaN(seconds) || isNaN(duration)) {
         audioStatus.classList.add('visible');
