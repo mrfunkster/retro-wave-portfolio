@@ -194,6 +194,9 @@
     visibility: hidden;
     cursor: pointer;
 }
+.time-code {
+    pointer-events: none;
+}
 .time-bar-section.visible {
     visibility: visible;
 }
