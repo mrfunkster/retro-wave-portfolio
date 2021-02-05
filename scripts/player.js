@@ -33,7 +33,6 @@ function initialization() {
 function loadTrack(index) {
     track.src = songList[index];
     track.load();
-    track.addEventListener('timeupdate', audioTimer)
 }
 
 
@@ -125,6 +124,7 @@ function fadeOut() {
 
 
 function audioTimer() {
+    window.requestAnimationFrame(audioTimer)
     let timeStamp = track.currentTime;
     let duration = track.duration;
     timeBarWidth(timeStamp, duration);
