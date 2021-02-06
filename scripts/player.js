@@ -11,6 +11,7 @@ let isPlaying               = false;
 let currentTrack            = 0;
 let audioContext            = null;
 let lastGainValue           = 0;
+let isFadeAfterLoading, isTrackLoaded;
 let track, src, analyser, gainNode;
 let fadeTime = 500;
 let songList = [
@@ -27,10 +28,14 @@ if (enableSoundOnLoadedPage) {
 
 function initialization() {
     track = document.createElement('audio');
+    track.onended = nextSong;
+    track.oncanplay = canPlay;
+    track.onloadstart = trackLoading;
     loadTrack(currentTrack);
 }
 
 function loadTrack(index) {
+    isFadeAfterLoading = true;
     track.src = songList[index];
     track.load();
 }
@@ -54,21 +59,37 @@ function play() {
 }
 
 
-
 function playSong() {
     console.log('playSong()')
     if(!audioContext) {
         createVisualizer();
     };
+    isPlaying = true;
     audioTimer();
     track.play();
-    fadeIn();
-    isPlaying = true;
-    playBtn.innerHTML = '<img src="images/pause.webp" alt="">';
-    track.onended = () => {
-        nextSong()
+    if(!isFadeAfterLoading) {
+        fadeIn();
+    };
+    if(isTrackLoaded) {
+        playBtn.innerHTML = '<img src="images/pause.webp" alt="">';
     }
 };
+
+function canPlay() {
+    fadeIn();
+    isFadeAfterLoading = false;
+    isTrackLoaded = true;
+    playBtn.innerHTML = '<img src="images/pause.webp" alt="">';
+    audioStatus.classList.remove('visible');
+    timeBarSection.classList.add('visible');
+};
+
+function trackLoading() {
+    isTrackLoaded = false;
+    playBtn.innerHTML = '<img src="images/audio-loader-small.gif" alt="">';
+    audioStatus.classList.add('visible');
+    timeBarSection.classList.remove('visible');
+}
 
 function pauseSong() {
     console.log('pauseSong()')
@@ -79,6 +100,7 @@ function pauseSong() {
 
 function nextSong() {
     console.log('nextSong()')
+
     fadeOut();
     setTimeout(() => {
         let nextTrack = currentTrack + 1;
@@ -107,7 +129,11 @@ function fadeIn() {
     fadeUp();
 }
 function fadeOut() {
+
     console.log(`fadeOut(): lastGainValue = ${lastGainValue}`)
+
+    removePlayerEventListeners();
+
     let i = lastGainValue;
     function fadeDown() {
         setTimeout(() => {
@@ -122,6 +148,7 @@ function fadeOut() {
     fadeDown();
     setTimeout(() => {
         track.pause();
+        addPlayerEventListeners();
     }, fadeTime);
 };
 
@@ -129,7 +156,10 @@ function fadeOut() {
 
 
 function audioTimer() {
-    window.requestAnimationFrame(audioTimer)
+    let timerAnimation = requestAnimationFrame(audioTimer);
+    if(!isPlaying) {
+        cancelAnimationFrame(timerAnimation);
+    };
     let timeStamp = track.currentTime;
     let duration = track.duration;
     timeBarWidth(timeStamp, duration);
@@ -138,12 +168,7 @@ function audioTimer() {
 
 function minutesConverter(seconds, duration = 0) {
     if (isNaN(seconds) || isNaN(duration)) {
-        audioStatus.classList.add('visible');
-        timeBarSection.classList.remove('visible');
         return '--'
-    } else {
-        audioStatus.classList.remove('visible');
-        timeBarSection.classList.add('visible');
     };
     let minutes = Math.floor(seconds / 60);
     if (minutes < 10) {
@@ -212,6 +237,16 @@ function trackSeeking(e) {
     track.currentTime = onBarPosition;
 }
 
-playBtn.addEventListener('click', play)
-playerNext.addEventListener('click', nextSong)
-timeBarSection.addEventListener('click', trackSeeking)
+function removePlayerEventListeners() {
+    playBtn.removeEventListener('click', play);
+    playerNext.removeEventListener('click', nextSong);
+    timeBarSection.removeEventListener('click', trackSeeking);
+}
+
+function addPlayerEventListeners() {
+    playBtn.addEventListener('click', play);
+    playerNext.addEventListener('click', nextSong);
+    timeBarSection.addEventListener('click', trackSeeking);
+}
+
+window.addEventListener('load', addPlayerEventListeners);
