@@ -1,5 +1,6 @@
 let playerNext              = document.querySelector('.player-next');
 let playBtn                 = document.querySelector('.player-btn');
+let playBtnIco              = document.querySelector('.btn-icons');
 let visualizer              = document.querySelector('.visualizer');
 let timeCode                = document.querySelector('.time-code');
 let timeCodeSection         = document.querySelector('.time-code-section');
@@ -71,7 +72,7 @@ function playSong() {
         fadeIn();
     };
     if(isTrackLoaded) {
-        playBtn.innerHTML = '<img src="images/pause-ico.svg" alt="">';
+        playBtnIco.innerHTML = '<img src="images/pause-ico.svg" alt="">';
     }
 };
 
@@ -79,14 +80,14 @@ function canPlay() {
     fadeIn();
     isFadeAfterLoading = false;
     isTrackLoaded = true;
-    playBtn.innerHTML = '<img src="images/pause-ico.svg" alt="">';
+    playBtnIco.innerHTML = '<img src="images/pause-ico.svg" alt="">';
     audioStatus.classList.remove('visible');
     timeBarSection.classList.add('visible');
 };
-
+ 
 function trackLoading() {
     isTrackLoaded = false;
-    playBtn.innerHTML = '<img src="images/loader-spinner.svg" alt="">';
+    playBtnIco.innerHTML = '<img src="images/loader-spinner.svg" alt="">';
     audioStatus.classList.add('visible');
     timeBarSection.classList.remove('visible');
 }
@@ -95,7 +96,7 @@ function pauseSong() {
     console.log('pauseSong()')
     fadeOut();
     isPlaying = false;
-    playBtn.innerHTML = '<img src="images/play-ico.svg" alt="">';
+    playBtnIco.innerHTML = '<img src="images/play-ico.svg" alt="">';
 };
 
 function nextSong() {
