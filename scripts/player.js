@@ -121,12 +121,13 @@ function fadeIn() {
         setTimeout(() => {
             if(isFadeOut) {
                 isFadeIn = false;
+                console.log(`Fade IN is Done at value = ${lastGainValue}`);
                 return
             };
             gainNode.gain.value = (i / 100);
-            lastGainValue = i;
             i++;
-            if (i <= 100) {
+            lastGainValue = i;
+            if (i < 100) {
                 fadeUp();
             } else {
                 isFadeIn = false;
@@ -149,16 +150,16 @@ function fadeOut() {
         setTimeout(() => {
             if(isFadeIn) {
                 isFadeOut = false;
+                console.log(`Fade OUT is Done at value = ${lastGainValue}`);
                 return
             };
             gainNode.gain.value = (i / 100);
-            lastGainValue = i;
             i--;
-            if (i >= 0) {
+            lastGainValue = i;
+            if (i > 0) {
                 fadeDown();
             } else {
                 isFadeOut = false;
-                console.log("Fade OUT is Done!")
             }
         }, fadeTime/150)
     };
