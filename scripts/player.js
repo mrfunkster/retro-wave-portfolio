@@ -56,6 +56,7 @@ function play() {
 
 
 function playSong() {
+    console.log('playSong()')
     if(!audioContext) {
         createVisualizer();
     };
@@ -70,12 +71,14 @@ function playSong() {
 };
 
 function pauseSong() {
+    console.log('pauseSong()')
     fadeOut();
     isPlaying = false;
     playBtn.innerHTML = '<img src="images/play.webp" alt="">';
 };
 
 function nextSong() {
+    console.log('nextSong()')
     fadeOut();
     setTimeout(() => {
         let nextTrack = currentTrack + 1;
@@ -89,6 +92,7 @@ function nextSong() {
 };
 
 function fadeIn() {
+    console.log(`fadeIn(): lastGainValue = ${lastGainValue}`)
     let i = lastGainValue
     function fadeUp() {
         setTimeout(() => {
@@ -103,6 +107,7 @@ function fadeIn() {
     fadeUp();
 }
 function fadeOut() {
+    console.log(`fadeOut(): lastGainValue = ${lastGainValue}`)
     let i = lastGainValue;
     function fadeDown() {
         setTimeout(() => {
@@ -112,7 +117,7 @@ function fadeOut() {
             if (i >= 0) {
                 fadeDown();
             }
-        }, fadeTime/100)
+        }, fadeTime/150)
     };
     fadeDown();
     setTimeout(() => {
