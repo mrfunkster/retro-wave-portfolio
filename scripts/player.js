@@ -115,13 +115,13 @@ function nextSong() {
 
 function fadeIn() {
     isFadeIn = true;
-    console.log(`fadeIn(), lastGainValue = ${lastGainValue}`);
+    console.log(`fadeIn(), start value = ${lastGainValue}`);
     let i = lastGainValue;
     function fadeUp() {
         setTimeout(() => {
             if(isFadeOut) {
                 isFadeIn = false;
-                console.log(`Fade IN is interrupt at value = ${lastGainValue}`);
+                console.log(`Fade IN is INTERRUPTED at value = ${lastGainValue}`);
                 return
             };
             gainNode.gain.value = (i / 100);
@@ -140,7 +140,7 @@ function fadeIn() {
 function fadeOut() {
     isFadeOut = true;
 
-    console.log(`fadeOut(), lastGainValue = ${lastGainValue}`)
+    console.log(`fadeOut(), start value = ${lastGainValue}`)
 
     removePlayerEventListeners();
 
@@ -150,7 +150,7 @@ function fadeOut() {
         setTimeout(() => {
             if(isFadeIn) {
                 isFadeOut = false;
-                console.log(`Fade OUT is interrupt at value = ${lastGainValue}`);
+                console.log(`Fade OUT is INTERRUPTED at value = ${lastGainValue}`);
                 return
             };
             gainNode.gain.value = (i / 100);
