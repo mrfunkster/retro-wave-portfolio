@@ -10,7 +10,6 @@ let enableSoundOnLoadedPage = false;
 let isPlaying               = false;
 let currentTrack            = 0;
 let audioContext            = null;
-let lastGainValue           = 0;
 let isFadeAfterLoading, isTrackLoaded;
 let track, src, analyser, gainNode;
 let fadeTime = 500;
@@ -114,12 +113,11 @@ function nextSong() {
 };
 
 function fadeIn() {
-    console.log(`fadeIn(): lastGainValue = ${lastGainValue}`)
-    let i = lastGainValue
+    console.log(`fadeIn()`)
+    let i = 0;
     function fadeUp() {
         setTimeout(() => {
             gainNode.gain.value = (i / 100);
-            lastGainValue = i;
             i++;
             if (i <= 100) {
                 fadeUp();
@@ -130,20 +128,19 @@ function fadeIn() {
 }
 function fadeOut() {
 
-    console.log(`fadeOut(): lastGainValue = ${lastGainValue}`)
+    console.log(`fadeOut()`)
 
     removePlayerEventListeners();
 
-    let i = lastGainValue;
+    let i = 100;
     function fadeDown() {
         setTimeout(() => {
             gainNode.gain.value = (i / 100);
-            lastGainValue = i;
             i--;
             if (i >= 0) {
                 fadeDown();
             }
-        }, fadeTime/150)
+        }, fadeTime/100)
     };
     fadeDown();
     setTimeout(() => {
