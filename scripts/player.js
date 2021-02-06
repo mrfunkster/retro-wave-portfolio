@@ -85,7 +85,7 @@ function canPlay() {
 
 function trackLoading() {
     isTrackLoaded = false;
-    playBtn.innerHTML = '<img src="images/audio-loader-small.gif" alt="">';
+    playBtn.innerHTML = '<img src="images/audio-loader-2.gif" alt="">';
     audioStatus.classList.add('visible');
     timeBarSection.classList.remove('visible');
 }
