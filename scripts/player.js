@@ -11,7 +11,7 @@ let isPlaying               = false;
 let currentTrack            = 0;
 let audioContext            = null;
 let lastGainValue           = 0;
-let isFadeAfterLoading, isTrackLoaded;
+let isFadeAfterLoading, isTrackLoaded, isFadeIn, isFadeOut;
 let track, src, analyser, gainNode;
 let fadeTime = 500;
 let songList = [
@@ -114,40 +114,49 @@ function nextSong() {
 };
 
 function fadeIn() {
+    isFadeIn = true;
     console.log(`fadeIn(), lastGainValue = ${lastGainValue}`);
-    let i = 0;
-    if (lastGainValue != 0) {
-        i = lastGainValue;
-    };
+    let i = lastGainValue;
     function fadeUp() {
         setTimeout(() => {
+            if(isFadeOut) {
+                isFadeIn = false;
+                return
+            };
             gainNode.gain.value = (i / 100);
             lastGainValue = i;
             i++;
             if (i <= 100) {
                 fadeUp();
+            } else {
+                isFadeIn = false;
             }
         }, fadeTime/100);
     }
     fadeUp();
 }
 function fadeOut() {
+    isFadeOut = true;
 
     console.log(`fadeOut(), lastGainValue = ${lastGainValue}`)
 
     removePlayerEventListeners();
 
-    let i = 100;
-    if (lastGainValue != 100) {
-        i = lastGainValue;
-    };
+    let i = lastGainValue;
+
     function fadeDown() {
         setTimeout(() => {
+            if(isFadeIn) {
+                isFadeOut = false;
+                return
+            };
             gainNode.gain.value = (i / 100);
             lastGainValue = i;
             i--;
             if (i >= 0) {
                 fadeDown();
+            } else {
+                isFadeOut = false;
             }
         }, fadeTime/150)
     };
