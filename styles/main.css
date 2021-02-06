@@ -783,8 +783,8 @@ section img {
     transition: .3s;
 }
 .item-zoom {
-    width: 80px;
-    height: 80px;
+    width: 35px;
+    height: 35px;
     position: absolute;
     top: 50%;
     left: 50%;

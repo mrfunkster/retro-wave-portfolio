@@ -145,7 +145,7 @@
     transform: translateX(30px);
 }
 .player-btn img {
-    width: 45%;
+    width: 33%;
     object-fit: cover;
     position: absolute;
     top: 50%;

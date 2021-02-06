@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">
+  <defs>
+    <style>
+      .a {
+        fill: #ffffff;
+      }
+    </style>
+  </defs>
+  <title>12 Play_2</title>
+  <path class="a" d="M4.8.61l24,18a3,3,0,0,1,0,4.8l-24,18A3,3,0,0,1,0,39V3A3,3,0,0,1,4.8.61Z"/>
+</svg>

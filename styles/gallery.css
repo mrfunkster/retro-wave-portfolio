@@ -72,7 +72,6 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    animation: loading 1s infinite ease-in-out;
 }
 .gallery-loader.visible {
     display: block;
