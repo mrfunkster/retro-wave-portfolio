@@ -130,6 +130,7 @@ function fadeIn() {
                 fadeUp();
             } else {
                 isFadeIn = false;
+                console.log("Fade In is Done!")
             }
         }, fadeTime/100);
     }
@@ -157,6 +158,7 @@ function fadeOut() {
                 fadeDown();
             } else {
                 isFadeOut = false;
+                console.log("Fade OUT is Done!")
             }
         }, fadeTime/150)
     };
