@@ -121,7 +121,7 @@ function fadeIn() {
         setTimeout(() => {
             if(isFadeOut) {
                 isFadeIn = false;
-                console.log(`Fade IN is Done at value = ${lastGainValue}`);
+                console.log(`Fade IN is interrupt at value = ${lastGainValue}`);
                 return
             };
             gainNode.gain.value = (i / 100);
@@ -150,7 +150,7 @@ function fadeOut() {
         setTimeout(() => {
             if(isFadeIn) {
                 isFadeOut = false;
-                console.log(`Fade OUT is Done at value = ${lastGainValue}`);
+                console.log(`Fade OUT is interrupt at value = ${lastGainValue}`);
                 return
             };
             gainNode.gain.value = (i / 100);
