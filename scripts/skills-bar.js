@@ -85,5 +85,7 @@ function clearDialogue() {
     currentText = '';
 };
 
-window.addEventListener('scroll', startTyping);
+function skillBarListening() {
+    window.addEventListener('scroll', startTyping);
+};
 

@@ -909,3 +909,180 @@ section img {
         display: none;
     }
 }
+
+/* Contacts */
+.contacts-section {
+    min-height: 100vh;
+}
+
+.contacts-form {
+    padding-top: 30px;
+}
+
+.inputs-container {
+    padding: 10px;
+}
+.inputs-container textarea {
+    width: 100%;
+    min-height: 200px;
+    resize: none;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid var(--fourth-color);
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'VCR Mono';
+    transition: .3s;
+    color: white;
+    box-shadow: 0 0 20px 0 var(--fourth-color);
+}
+
+.contacts-form input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: 1px solid var(--fourth-color);
+    color: white;
+    font-family: 'VCR Mono';
+    background-color: transparent;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: .3s;
+    box-shadow: 0 0 20px 0 var(--fourth-color);
+}
+.contacts-form input::placeholder,
+.contacts-form textarea::placeholder {
+    color: var(--fifth-color);
+}
+
+.contacts-form input:focus,
+.contacts-form textarea:focus {
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 80px 0 var(--primary-color);
+}
+
+.contacts-form input._error,
+.contacts-form textarea._error {
+    border: 1px solid red;
+    box-shadow: 0 0 40px 0 red;
+}
+
+.contacts-form input._error::placeholder,
+.contacts-form textarea._error::placeholder {
+    color: red;
+}
+
+.submit-button {
+    margin-top: 15px;
+    font-size: 22px;
+    border: 1px solid var(--primary-color);
+    font-family: 'Lowrider Bold Italic';
+    animation: neonFlickerPrimary 2s linear infinite;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    height: 60px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submit-button img {
+    height: 100%;
+    object-fit: contain;
+}
+.submit-button:hover {
+    color: var(--fourth-color);
+}
+.submit-button:focus {
+    animation: none;
+    box-shadow: 0 0 80px 0 var(--primary-color);
+    color: var(--fourth-color);
+}
+
+/* MODAL Window */ 
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 5000;
+    transition: .5s;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-window {
+    padding: 30px;
+    background-color: black;
+    border-radius: 10px;
+    position: absolute;
+    transform: scale(0);
+    text-align: center;
+    transition: .3s
+}
+.modal.visible .modal-window {
+    transform: scale(1);
+}
+.modal-close {
+    position: absolute;
+    font-size: 24px;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+.modal-close:hover {
+    text-decoration: underline;
+    color: red;
+}
+.modal-window.error {
+    box-shadow: 0 0 200px 0 red;
+}
+.modal-header {
+    font-family: 'Lowrider Bold Italic';
+    font-size: 26px;
+    user-select: none;
+}
+.modal-window.error .modal-header {
+    color: red;
+}
+.modal-window.success .modal-header {
+    color: green;
+}
+.modal-window.success {
+    box-shadow: 0 0 200px 0 green;
+}
+.modal-message {
+    user-select: none;
+    padding: 30px 0;
+}
+.modal-message span {
+    color: green;
+}
+.modal-button {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 24px;
+
+}
+.modal-button:hover {
+    text-decoration: underline;
+    color: green;
+}

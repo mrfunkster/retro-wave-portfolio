@@ -132,8 +132,8 @@ function fadeIn() {
                 fadeUp();
             } else {
                 isFadeIn = false;
-                console.log("Fade In is Done!")
-            }
+                console.log("Fade IN is Done!");
+            };
         }, fadeTime/100);
     }
     fadeUp();
@@ -161,7 +161,8 @@ function fadeOut() {
                 fadeDown();
             } else {
                 isFadeOut = false;
-            }
+                console.log("Fade OUT is Done!")
+            };
         }, fadeTime/150)
     };
     fadeDown();
@@ -212,7 +213,7 @@ function secondsConverter(seconds, duration = 0) {
 function timeBarWidth(seconds, duration) {
     let currentTime = Math.floor(seconds);
     let barWidth = (100 * currentTime) / duration;
-    timeBar.style.width = barWidth + '%'
+    timeBar.style.width = barWidth + '%';
 }
 
 
@@ -267,5 +268,3 @@ function addPlayerEventListeners() {
     playerNext.addEventListener('click', nextSong);
     timeBarSection.addEventListener('click', trackSeeking);
 }
-
-window.addEventListener('load', addPlayerEventListeners);

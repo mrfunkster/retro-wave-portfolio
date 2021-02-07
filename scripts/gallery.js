@@ -44,16 +44,16 @@ let images = [
     ],
 ];
 
-
-
-for (let i = 0; i < menuItemsImages.length; i++) {
-    menuItemsImages[i].addEventListener('click', function() {
-        if(images[i].length) {
-            createGallery(i);
-        } else {
-            alert('Gallery for this element is empty yet!')
-        }
-    });
+function galleryListeners() {
+    for (let i = 0; i < menuItemsImages.length; i++) {
+        menuItemsImages[i].addEventListener('click', function() {
+            if(images[i].length) {
+                createGallery(i);
+            } else {
+                alert('Gallery for this element is empty yet!')
+            }
+        });
+    };
 };
 
 function createGallery(index) {
@@ -153,17 +153,6 @@ function createGallery(index) {
     function isOverlay(e) {
         if(e.target === gallery) {
             closeGallery();
-        }
-    }
-
-    function swipe(e) {
-        let midPoint = Math.floor(screen.width / 2);
-        let touch = e.targetTouches[0];
-        let pageX = touch.pageX;
-        if(pageX > midPoint) {
-            prevImage();
-        } else {
-            nextImage();
         }
     }
 
