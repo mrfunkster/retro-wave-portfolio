@@ -914,7 +914,15 @@ section img {
 .contacts-section {
     min-height: 100vh;
 }
-
+.contacts-section .section-title {
+    text-align: center;
+}
+.contacts-description {
+    text-align: center;
+    font-family: 'stormfaze';
+    font-size: 22px;
+    color: var(--primary-color);
+}
 .contacts-form {
     padding-top: 30px;
 }
