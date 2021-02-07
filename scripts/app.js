@@ -153,9 +153,9 @@ function postForm() {
         };
 
         if (error === 0) {
-            submitButton.innerHTML = '<img src="images/loader-spinner.svg" alt="">';
-            
+            submitButton.innerHTML = '<img src="images/loader-spinner.svg" alt="">';            
             sendMail(formData);
+            form.reset();
         } else {
             modalMessage("Please, enter a <span>correct</span> information!", "error");
         }
