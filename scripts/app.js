@@ -144,7 +144,7 @@ function postForm() {
     async function formSend(e) {
         e.preventDefault();
         
-        let error = formValidate(form);
+        let error = formValidate();
 
         let formData = {
             name: name.value,
@@ -183,7 +183,7 @@ function postForm() {
         })
     }
 
-    function formValidate(form) {
+    function formValidate() {
         let error = 0;
         let formReq = document.querySelectorAll('._req');
 
