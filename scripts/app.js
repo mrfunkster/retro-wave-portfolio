@@ -134,10 +134,10 @@ for (let anchor of anchors) {
 // Form
 
 function postForm() {
-    const form = document.getElementById('form');
-    const name = document.getElementById('input-name');
-    const email = document.getElementById('input-email');
-    const message = document.getElementById('input-message');
+    const form         = document.getElementById('form');
+    const name         = document.getElementById('input-name');
+    const email        = document.getElementById('input-email');
+    const message      = document.getElementById('input-message');
     const submitButton = document.querySelector('.submit-button');
     form.addEventListener('submit', formSend);
 
@@ -229,12 +229,12 @@ function postForm() {
 // Modal Window
 
 function modalMessage(text, type) {
-    let modal = document.querySelector('.modal');
+    let modal         = document.querySelector('.modal');
     let closeModalBtn = document.querySelector('.modal-close');
-    let modalMessage = document.querySelector('.modal-message');
-    let modalHeader = document.querySelector('.modal-header');
-    let modalWindow = document.querySelector('.modal-window');
-    let modalButton = document.querySelector('.modal-button'); 
+    let modalMessage  = document.querySelector('.modal-message');
+    let modalHeader   = document.querySelector('.modal-header');
+    let modalWindow   = document.querySelector('.modal-window');
+    let modalButton   = document.querySelector('.modal-button'); 
 
     modalMessage.innerHTML = text;
     if(type === 'error') {
