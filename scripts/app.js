@@ -153,15 +153,15 @@ function postForm() {
         };
 
         if (error === 0) {
-            submitButton.innerHTML = '<img src="images/loader-spinner.svg" alt="">';            
+            submitButton.innerHTML = '<img src="images/loader-spinner-yellow.svg" alt="">';
             sendMail(formData);
-            form.reset();
         } else {
             modalMessage("Please, enter a <span>correct</span> information!", "error");
         }
     };
 
     function sendMail(data) {
+        submitButton.disabled = true;
         Email.send({
             Host: "smtp.gmail.com",
             Username: 'retrowaveportfolio@gmail.com',
@@ -169,11 +169,17 @@ function postForm() {
             To: "mr.funksters@gmail.com",
             From: 'retrowaveportfolio@gmail.com',
             Subject: `${data.name} sent you a message from RetroWave Portfolio Web Site`,
-            Body: `<h1>${data.name} sent you a message from RetroWave Portfolio Web Site. Please, reply for this message!</h1><br/> <b>Name:</b> ${data.name} <br/> <b>E-mail:</b> <a href="${data.email}">${data.email}</a> <br/> <b>Message:</b> ${data.message}`,
+            Body: `<h2>${data.name} sent you a message from RetroWave Portfolio Web Site. Please, reply for this message!</h2><br/> <b>Name:</b> ${data.name} <br/> <b>E-mail:</b> <a href="${data.email}">${data.email}</a> <br/> <b>Message:</b> ${data.message}`,
         }).then(message => {
-            console.log(message);
+            if (message === "OK") {
+                form.reset();
+                modalMessage(`<span>${data.name}</span>, You're message successfuly sended! Thank You!`, "success");
+            } else {
+                modalMessage(`Something happened. Please try again.`, "error");
+            }
+            
+            submitButton.disabled = false;
             submitButton.innerHTML = 'Submit';
-            modalMessage(`<span>${data.name}</span>, You're message successfuly sended! Thank You!`, "success");
         })
     }
 
