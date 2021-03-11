@@ -1120,7 +1120,7 @@ section img {
     border-radius: 50%;
     padding: 5px;
     cursor: pointer;
-    visibility: none;
+    visibility: hidden;
     opacity: 0;
     transition: .3s;
 }
