@@ -830,6 +830,9 @@ section img {
     padding-bottom: 15px;
     text-align: center;
 }
+.menu-item-description p {
+    line-height: 24px;
+}
 .check-button {
     display: inline-block;
     border: 1px solid var(--fourth-color);
@@ -1096,4 +1099,29 @@ section img {
 .modal-button:hover {
     text-decoration: underline;
     color: green;
+}
+
+.scroll-up-btn {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    visibility: none;
+    opacity: 0;
+    transition: .3s;
+}
+.scroll-up-btn.visible {
+    opacity: .5;
+    visibility: visible;
+}
+.scroll-up-btn img {
+    width: 100%;
+    object-fit: cover;
 }

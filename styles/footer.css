@@ -1,0 +1,22 @@
+.footer-row {
+    align-items: center;
+    justify-content: space-between;
+    min-height: 60px;
+}
+.footer-links {
+    display: flex;
+}
+.footer-link a img {
+    width: 100%;
+    object-fit: cover;
+}
+.footer-link a {
+    width: 100%;
+}
+.footer-link {
+    width: 30px;
+    margin: 10px;
+}
+.svg-icon:hover {
+    fill: black;
+}

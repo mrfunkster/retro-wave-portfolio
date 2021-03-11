@@ -8,6 +8,8 @@ let mobileHeaderHeight   = mobileHeader.offsetHeight;
 let welcomeSectionHeight = welcomeSection.offsetHeight;
 let viewportWidth        = window.innerWidth;
 let sections             = document.querySelectorAll('section');
+let scrollUpBtn          = document.querySelector(".scroll-up-btn");
+let currentYOffset      = window.pageYOffset;
 
 
 // Set-up
@@ -130,6 +132,18 @@ for (let anchor of anchors) {
         }, 200)
     })
 }
+
+function scrollUpBtnVisibility() {
+    if (window.pageYOffset || currentYOffset > welcomeSection.offsetHeight) {
+        scrollUpBtn.classList.add('visible');
+    } else {
+        scrollUpBtn.classList.remove('visible');
+    }
+}
+
+scrollUpBtnVisibility();
+
+window.addEventListener("scroll", scrollUpBtnVisibility);
 
 // Form
 

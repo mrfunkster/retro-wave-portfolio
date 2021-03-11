@@ -42,6 +42,11 @@ let images = [
         'images/menu/4/04.webp',
         'images/menu/4/05.webp',
     ],
+    [
+        'images/menu/5/01.webp',
+        'images/menu/5/02.webp',
+        'images/menu/5/03.webp',
+    ],
 ];
 
 function galleryListeners() {
