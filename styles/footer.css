@@ -20,3 +20,19 @@
 .svg-icon:hover {
     fill: black;
 }
+
+@media (max-width: 425px) {
+    .footer-links {
+        order: 0;
+        justify-content: center;
+    }
+    .footer-link {
+        width: 35px;
+    }
+    .footer-title {
+        order: 1;
+    }
+    .footer-title {
+        text-align: center;
+    }
+}

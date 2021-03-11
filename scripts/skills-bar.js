@@ -57,7 +57,7 @@ function startTyping() {
     if(!isLargeScreenNow()) {
         scrollOffset = mobileHeaderHeight
     }
-    if((window.scrollY >= (skillBarSection.offsetTop - scrollOffset - 1)) && !isScrolled) {
+    if((window.scrollY || currentYOffset >= (skillBarSection.offsetTop - scrollOffset - 1)) && !isScrolled) {
         textTyping(0);
         isScrolled = true;
         window.removeEventListener('scroll', startTyping);
