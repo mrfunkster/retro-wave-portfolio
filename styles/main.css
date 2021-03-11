@@ -915,7 +915,7 @@ section img {
 
 /* Contacts */
 .contacts-section {
-    min-height: 100vh;
+    min-height: calc(100vh - var(--footer-height));
 }
 .contacts-section .section-title {
     text-align: center;

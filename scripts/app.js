@@ -9,7 +9,7 @@ let welcomeSectionHeight = welcomeSection.offsetHeight;
 let viewportWidth        = window.innerWidth;
 let sections             = document.querySelectorAll('section');
 let scrollUpBtn          = document.querySelector(".scroll-up-btn");
-let currentYOffset      = window.pageYOffset;
+let currentYOffset       = window.pageYOffset;
 
 
 // Set-up
@@ -30,6 +30,11 @@ function setMobileBrowserHeight() {
 function setNavMenuWidth() {
     let navMenuWidth = document.querySelector('.header').offsetWidth;
     document.documentElement.style.setProperty('--nav-width', `${navMenuWidth}px`);
+}
+
+function getFooterHeight() {
+    let footerHeight = document.querySelector('.footer').offsetHeight;
+    document.documentElement.style.setProperty('--footer-height', `${footerHeight}px`);
 }
 
 const headerVisibility = () => {
@@ -53,11 +58,13 @@ function bodyUnlock() {
 setMobileBrowserHeight();
 setNavMenuWidth();
 headerVisibility();
+getFooterHeight();
 
 window.addEventListener('resize', () => {
     viewportWidth = window.innerWidth;
     setMobileBrowserHeight();
     headerVisibility();
+    getFooterHeight();
 });
 window.addEventListener("scroll", headerVisibility);
 
