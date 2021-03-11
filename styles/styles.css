@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    -webkit-appearance: none;
 }
 html {
     --primary-color: #F2387C;

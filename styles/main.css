@@ -734,6 +734,9 @@ section img {
     z-index: 0;
     filter: blur(2px) brightness(30%);
 }
+.background-image-blured:nth-child(1) {
+    filter: blur(1px) brightness(20%);
+}
 .projects-section-container {
     position: relative;
 }
@@ -916,6 +919,10 @@ section img {
 /* Contacts */
 .contacts-section {
     min-height: calc(100vh - var(--footer-height));
+    position: relative;
+}
+.contacts-section-container {
+    position: relative;
 }
 .contacts-section .section-title {
     text-align: center;
@@ -1124,4 +1131,18 @@ section img {
 .scroll-up-btn img {
     width: 100%;
     object-fit: cover;
+}
+
+.cv-button {
+    margin-top: 30px;
+}
+.contacts-form h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: 'Lowrider Bold Italic';
+    font-size: 18px;
+}
+.contacts-form h3 span {
+    color: var(--primary-color);
+    font-size: 18px;
 }
