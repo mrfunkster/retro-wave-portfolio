@@ -47,6 +47,14 @@ let images = [
         'images/menu/5/02.webp',
         'images/menu/5/03.webp',
     ],
+    [
+        'images/menu/6/01.webp',
+        'images/menu/6/02.webp',
+        'images/menu/6/03.webp',
+        'images/menu/6/04.webp',
+        'images/menu/6/05.webp',
+        'images/menu/6/06.webp',
+    ]
 ];
 
 function galleryListeners() {
@@ -65,7 +73,6 @@ function createGallery(index) {
     let imgArray = images[index];
     let imageNumber = 0;
     let touchStartX;
-    // let closeGalleryBtn, galleryNext, galleryPrev, galleryCount, galleryLoader;
 
     createGalleryElements();
 
@@ -80,12 +87,6 @@ function createGallery(index) {
         element = document.createElement('div');
         element.classList.add('gallery-element');
         gallery.appendChild(element);
-
-        // closeGalleryBtn = document.createElement('div');
-        // closeGalleryBtn.innerHTML = 'X';
-        // closeGalleryBtn.classList.add('gallery-close');
-        // gallery.appendChild(closeGalleryBtn);
-
         image = document.createElement('img');
         element.appendChild(image);
         image.src = imgArray[imageNumber];
